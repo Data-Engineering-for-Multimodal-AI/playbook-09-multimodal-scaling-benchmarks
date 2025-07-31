@@ -1,0 +1,28 @@
+
+# Modal Serverless Deployment Commands
+# ====================================
+
+# 1. First, authenticate with Modal (if not already done)
+modal auth new
+
+# 2. Deploy the serverless application
+modal deploy serverless_multimodal_pipeline.py
+
+# 3. Run the clinical workload burst simulation
+modal run serverless_multimodal_pipeline.py::simulate_clinical_workload_bursts
+
+# 4. Run inference on specific data
+modal run serverless_multimodal_pipeline.py::multimodal_inference_dag \
+    --radiology-data='[{"study_id":"001","study_type":"MRI","diagnosis":"Stroke","slice_count":161}]' \
+    --telemetry-data='[{"patient_id":"P001","age_quantile":10,"vitals":{"heart_rate":[75,76,74]}}]' \
+    --clinical-notes='[{"note_id":"N001","medical_specialty":"Emergency","note":"Patient presents with chest pain"}]'
+
+# 5. Monitor the application (opens dashboard)
+modal app list
+modal app logs atlas-health-multimodal
+
+# Key things to observe in Modal dashboard:
+# - GPU nodes spinning up for radiology workload
+# - CPU containers scaling independently  
+# - Automatic teardown after idle timeout
+# - Zero cost when no requests active

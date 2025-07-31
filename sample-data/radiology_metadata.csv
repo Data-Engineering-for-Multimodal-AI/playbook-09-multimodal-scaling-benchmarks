@@ -1,0 +1,101 @@
+study_id,study_type,diagnosis,slice_count
+001,MRI,Stroke,161
+002,CT,MS Lesion,227
+003,MRI,COVID-19,246
+004,MRI,Tumor,201
+005,CT,Pneumonia,188
+006,MRI,Tumor,108
+007,MRI,Stroke,118
+008,CT,MS Lesion,162
+009,XRay,Hemorrhage,1
+010,MRI,Tumor,246
+011,MRI,Fracture,171
+012,CT,Fibrosis,312
+013,CT,Stroke,349
+014,XRay,Fracture,1
+015,CT,MS Lesion,329
+016,XRay,Normal,1
+017,MRI,Fracture,170
+018,CT,Pneumonia,187
+019,MRI,Tumor,239
+020,CT,Tumor,256
+021,CT,Fibrosis,177
+022,XRay,Hemorrhage,1
+023,MRI,Hemorrhage,144
+024,MRI,Pneumonia,143
+025,MRI,MS Lesion,141
+026,MRI,COPD,107
+027,XRay,Normal,1
+028,XRay,Pneumonia,1
+029,MRI,Fibrosis,156
+030,MRI,COVID-19,207
+031,CT,COVID-19,290
+032,MRI,Fibrosis,149
+033,XRay,Pneumonia,1
+034,MRI,Hemorrhage,140
+035,MRI,Stroke,182
+036,MRI,Normal,150
+037,CT,Pneumonia,156
+038,CT,Pneumonia,318
+039,XRay,Pneumonia,1
+040,XRay,Hemorrhage,1
+041,MRI,Fibrosis,188
+042,XRay,Pneumonia,1
+043,MRI,Fibrosis,232
+044,MRI,Normal,243
+045,CT,COPD,337
+046,CT,Tumor,225
+047,CT,Fibrosis,302
+048,XRay,Fracture,1
+049,CT,Pneumonia,197
+050,XRay,COVID-19,1
+051,XRay,MS Lesion,1
+052,XRay,Tumor,1
+053,XRay,Pneumonia,1
+054,CT,COPD,300
+055,CT,COPD,186
+056,CT,COVID-19,246
+057,MRI,Pneumonia,233
+058,XRay,Normal,1
+059,CT,Normal,228
+060,XRay,Fibrosis,1
+061,CT,Fibrosis,331
+062,XRay,Fibrosis,1
+063,MRI,Stroke,207
+064,MRI,Fracture,250
+065,CT,COVID-19,194
+066,XRay,MS Lesion,1
+067,MRI,Fibrosis,106
+068,CT,Hemorrhage,236
+069,XRay,Normal,1
+070,MRI,Stroke,161
+071,XRay,Tumor,1
+072,CT,Fibrosis,164
+073,MRI,MS Lesion,204
+074,CT,Fibrosis,255
+075,CT,Pneumonia,242
+076,XRay,COVID-19,1
+077,CT,Hemorrhage,179
+078,XRay,MS Lesion,1
+079,MRI,COVID-19,221
+080,XRay,Fracture,1
+081,XRay,COPD,1
+082,CT,Fracture,230
+083,XRay,Stroke,1
+084,CT,MS Lesion,328
+085,CT,COPD,311
+086,XRay,Stroke,1
+087,MRI,Fracture,227
+088,MRI,COPD,150
+089,CT,Hemorrhage,223
+090,MRI,Fibrosis,248
+091,XRay,Fibrosis,1
+092,MRI,Normal,223
+093,XRay,COPD,1
+094,XRay,MS Lesion,1
+095,CT,Pneumonia,206
+096,MRI,MS Lesion,115
+097,CT,Tumor,188
+098,XRay,Stroke,1
+099,XRay,COVID-19,1
+100,CT,Tumor,234

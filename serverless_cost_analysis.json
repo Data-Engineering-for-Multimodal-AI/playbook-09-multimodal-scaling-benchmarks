@@ -1,0 +1,28 @@
+{
+  "serverless_modal": {
+    "description": "On-demand serverless GPU functions",
+    "daily_cost": {
+      "gpu_usage": "$20/day (4 hours actual usage)",
+      "cpu_usage": "$5/day (distributed across bursts)",
+      "total": "$25/day"
+    },
+    "monthly_cost": "$750",
+    "utilization": "~90% (only pay when processing)"
+  },
+  "economic_benefits": {
+    "zero_idle_cost": "No charges when resources are not actively processing",
+    "linear_scaling": "Cost scales directly with workload demand",
+    "no_capital_investment": "Immediate deployment without infrastructure setup"
+  },
+  "scaling_scenarios": {
+    "morning_surge": {
+      "serverless": "Scales up automatically, pays for actual usage"
+    },
+    "weekend_light": {
+      "serverless": "Minimal cost, automatic scale-down"
+    },
+    "unexpected_burst": {
+      "serverless": "Scales elastically, no pre-planning needed"
+    }
+  }
+}
