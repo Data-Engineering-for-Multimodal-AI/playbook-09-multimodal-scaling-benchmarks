@@ -1,28 +1,59 @@
 {
-  "serverless_modal": {
-    "description": "On-demand serverless GPU functions",
-    "daily_cost": {
-      "gpu_usage": "$20/day (4 hours actual usage)",
-      "cpu_usage": "$5/day (distributed across bursts)",
-      "total": "$25/day"
-    },
-    "monthly_cost": "$750",
-    "utilization": "~90% (only pay when processing)"
-  },
-  "economic_benefits": {
-    "zero_idle_cost": "No charges when resources are not actively processing",
-    "linear_scaling": "Cost scales directly with workload demand",
-    "no_capital_investment": "Immediate deployment without infrastructure setup"
-  },
-  "scaling_scenarios": {
-    "morning_surge": {
-      "serverless": "Scales up automatically, pays for actual usage"
-    },
-    "weekend_light": {
-      "serverless": "Minimal cost, automatic scale-down"
-    },
-    "unexpected_burst": {
-      "serverless": "Scales elastically, no pre-planning needed"
+  "source": "run_serverless_demo.py (local backend), 2026-10-24",
+  "rates_usd_per_hour": {
+    "date": "2026-10-24",
+    "cpu_core": 0.0473,
+    "memory_gib": 0.008,
+    "gpu": {
+      "A100-40GB": 2.1,
+      "A100-80GB": 2.5,
+      "A10G": 1.1,
+      "L4": 0.8,
+      "T4": 0.59,
+      "H100": 3.95
     }
-  }
+  },
+  "resources": {
+    "radiology": {
+      "gpu": "A100-40GB",
+      "cpu": 0.125,
+      "memory_gib": 8,
+      "scaledown_window": 60
+    },
+    "labs": {
+      "gpu": null,
+      "cpu": 2,
+      "memory_gib": 4,
+      "scaledown_window": 30
+    },
+    "notes": {
+      "gpu": null,
+      "cpu": 4,
+      "memory_gib": 8,
+      "scaledown_window": 45
+    }
+  },
+  "per_modality": {
+    "radiology": {
+      "workers_started": 6,
+      "worker_seconds": 450.7,
+      "cold_start_mean_seconds": 6.42,
+      "cost_at_modal_rates_usd": 0.2717
+    },
+    "labs": {
+      "workers_started": 7,
+      "worker_seconds": 254.7,
+      "cold_start_mean_seconds": 1.84,
+      "cost_at_modal_rates_usd": 0.009
+    },
+    "notes": {
+      "workers_started": 4,
+      "worker_seconds": 264.4,
+      "cold_start_mean_seconds": 11.63,
+      "cost_at_modal_rates_usd": 0.0186
+    }
+  },
+  "total_cost_at_modal_rates_usd": 0.2993,
+  "cases": 175,
+  "cost_per_case_usd": 0.00171
 }

@@ -4,20 +4,20 @@
     "radiology": 0.9999,
     "labs": 0.3546,
     "notes": 0.1965,
-    "triage_score": 0.6456285065030853,
+    "triage_score": 0.6456284737205307,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0001",
     "radiology": 0.9603,
     "labs": 0.5521,
     "notes": 0.1018,
-    "triage_score": 0.666141988705961,
+    "triage_score": 0.6661419618838709,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0002",
@@ -27,7 +27,7 @@
     "triage_score": 0.2740623835783758,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0003",
@@ -37,7 +37,7 @@
     "triage_score": 0.16285707261980983,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0004",
@@ -47,17 +47,17 @@
     "triage_score": 0.5494003333304228,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0005",
     "radiology": 0.9957,
     "labs": 0.6113,
     "notes": 0.1241,
-    "triage_score": 0.7060876610813398,
+    "triage_score": 0.7060876551208753,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0006",
@@ -67,17 +67,17 @@
     "triage_score": 0.2919745972944131,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0007",
     "radiology": 0.7456,
     "labs": 0.2707,
     "notes": 0.0201,
-    "triage_score": 0.4580396837055809,
+    "triage_score": 0.45803967550994223,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0008",
@@ -87,277 +87,277 @@
     "triage_score": 0.7289166802600747,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0009",
     "radiology": 0.9837,
     "labs": 0.3064,
     "notes": 0.1223,
-    "triage_score": 0.6082289675491211,
+    "triage_score": 0.60822895264796,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0010",
     "radiology": 0.9947,
     "labs": 0.4082,
     "notes": 0.0303,
-    "triage_score": 0.6258569160550969,
+    "triage_score": 0.6258569134473936,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0011",
     "radiology": 0.2897,
     "labs": 0.4771,
     "notes": 0.0564,
-    "triage_score": 0.2992922269281289,
+    "triage_score": 0.2992922068115613,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0012",
     "radiology": 0.0006,
     "labs": 0.7681,
     "notes": 0.0315,
-    "triage_score": 0.23702045665321111,
+    "triage_score": 0.23702044473228218,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0013",
     "radiology": 0.0002,
     "labs": 0.2339,
     "notes": 0.0197,
-    "triage_score": 0.07423119546924785,
+    "triage_score": 0.0742311898813124,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0014",
     "radiology": 0.9639,
     "labs": 0.6115,
     "notes": 0.0316,
-    "triage_score": 0.6716961909789856,
+    "triage_score": 0.6716961932141597,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0015",
     "radiology": 0.0022,
     "labs": 0.4424,
     "notes": 0.0079,
-    "triage_score": 0.13540659243158976,
+    "triage_score": 0.13540658945135753,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0016",
     "radiology": 0.0326,
     "labs": 0.5834,
     "notes": 0.0145,
-    "triage_score": 0.19420296777726612,
+    "triage_score": 0.19420296535582743,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0017",
     "radiology": 0.9995,
     "labs": 0.4787,
     "notes": 0.042,
-    "triage_score": 0.6517568247234053,
+    "triage_score": 0.6517568187629409,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0018",
     "radiology": 1.0,
     "labs": 0.1492,
     "notes": 0.0219,
-    "triage_score": 0.5491384653403234,
+    "triage_score": 0.5491384619875621,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0019",
     "radiology": 0.9013,
     "labs": 0.0953,
     "notes": 0.0723,
-    "triage_score": 0.4936966077357322,
+    "triage_score": 0.49369659879503547,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0020",
     "radiology": 0.9197,
     "labs": 0.1877,
     "notes": 0.0337,
-    "triage_score": 0.5229193777530668,
+    "triage_score": 0.5229193717926024,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0021",
     "radiology": 0.6663,
     "labs": 0.6805,
     "notes": 0.0583,
-    "triage_score": 0.5489874332879375,
+    "triage_score": 0.5489874250922989,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0022",
     "radiology": 0.2313,
     "labs": 0.553,
     "notes": 0.0248,
-    "triage_score": 0.2865022983932648,
+    "triage_score": 0.28650229019762613,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0023",
     "radiology": 0.9984,
     "labs": 0.6324,
     "notes": 0.0707,
-    "triage_score": 0.703086279594058,
+    "triage_score": 0.703086267673129,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0024",
     "radiology": 1.0,
     "labs": 0.0252,
     "notes": 0.0343,
-    "triage_score": 0.514411754137183,
+    "triage_score": 0.5144117638229377,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0025",
     "radiology": 0.0001,
     "labs": 0.7976,
     "notes": 0.2232,
-    "triage_score": 0.2839676442511658,
+    "triage_score": 0.2839675608046631,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0026",
     "radiology": 1.0,
     "labs": 0.1135,
     "notes": 0.0761,
-    "triage_score": 0.5492414749637518,
+    "triage_score": 0.5492414630428228,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0027",
     "radiology": 0.9998,
     "labs": 0.5627,
     "notes": 0.0231,
-    "triage_score": 0.6733504970882729,
+    "triage_score": 0.6733504896376923,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0028",
     "radiology": 0.945,
     "labs": 0.3176,
     "notes": 0.0249,
-    "triage_score": 0.5727828195717491,
+    "triage_score": 0.5727828158464588,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0029",
     "radiology": 1.0,
     "labs": 0.2012,
     "notes": 0.0175,
-    "triage_score": 0.5638567398321477,
+    "triage_score": 0.5638567383420315,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0030",
     "radiology": 0.9982,
     "labs": 0.3825,
     "notes": 0.0298,
-    "triage_score": 0.6198069924574133,
+    "triage_score": 0.6198069976728198,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0031",
     "radiology": 1.0,
     "labs": 0.5087,
     "notes": 0.025,
-    "triage_score": 0.6575979197314028,
+    "triage_score": 0.6575979133984093,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0032",
     "radiology": 0.0362,
     "labs": 0.7199,
     "notes": 0.1979,
-    "triage_score": 0.27364567669356665,
+    "triage_score": 0.2736456498714765,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0033",
     "radiology": 0.9998,
     "labs": 0.1296,
     "notes": 0.0833,
-    "triage_score": 0.5554280457669465,
+    "triage_score": 0.5554280249053207,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0034",
     "radiology": 0.9539,
     "labs": 0.1664,
     "notes": 0.0847,
-    "triage_score": 0.543796042434925,
+    "triage_score": 0.5437960379645765,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0035",
     "radiology": 0.9493,
     "labs": 0.0603,
     "notes": 0.1071,
-    "triage_score": 0.5141711947456605,
+    "triage_score": 0.5141711589828737,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0036",
@@ -367,137 +367,137 @@
     "triage_score": 0.6442348523077485,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0037",
     "radiology": 1.0,
     "labs": 0.7201,
     "notes": 0.0305,
-    "triage_score": 0.7221304208795492,
+    "triage_score": 0.7221304178993169,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0038",
     "radiology": 0.9996,
     "labs": 0.1147,
     "notes": 0.1189,
-    "triage_score": 0.5579723566872536,
+    "triage_score": 0.5579723641378342,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0039",
     "radiology": 1.0,
     "labs": 0.4558,
     "notes": 0.0122,
-    "triage_score": 0.6391854941283276,
+    "triage_score": 0.6391854894717147,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0040",
     "radiology": 0.9998,
     "labs": 0.2167,
     "notes": 0.0747,
-    "triage_score": 0.5798357819939174,
+    "triage_score": 0.5798357864642657,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0041",
     "radiology": 0.0002,
     "labs": 0.4728,
     "notes": 0.0658,
-    "triage_score": 0.15508122553470727,
+    "triage_score": 0.15508122404459113,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0042",
     "radiology": 0.0,
     "labs": 0.3093,
     "notes": 0.0711,
-    "triage_score": 0.10701027572689836,
+    "triage_score": 0.10701026082573717,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0043",
     "radiology": 1.0,
     "labs": 0.784,
     "notes": 0.1094,
-    "triage_score": 0.7570891712895141,
+    "triage_score": 0.7570891578784691,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0044",
     "radiology": 0.9775,
     "labs": 0.4967,
     "notes": 0.028,
-    "triage_score": 0.6433808595937054,
+    "triage_score": 0.6433808584761183,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0045",
     "radiology": 0.0054,
     "labs": 0.5249,
     "notes": 0.0934,
-    "triage_score": 0.1788385592955261,
+    "triage_score": 0.17883851459204253,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0046",
     "radiology": 1.0,
     "labs": 0.603,
     "notes": 0.0313,
-    "triage_score": 0.6871626884199306,
+    "triage_score": 0.6871626846946403,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0047",
     "radiology": 1.0,
     "labs": 0.3571,
     "notes": 0.5803,
-    "triage_score": 0.7231933194260893,
+    "triage_score": 0.7231932479005156,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0048",
     "radiology": 0.0003,
     "labs": 0.3061,
     "notes": 0.0616,
-    "triage_score": 0.10429832655085926,
+    "triage_score": 0.1042983019639433,
     "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0049",
     "radiology": 0.9998,
     "labs": 0.6307,
     "notes": 0.0383,
-    "triage_score": 0.6967959670812423,
+    "triage_score": 0.6967959693164165,
     "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 21.214757204055786
+    "scenario_time": 15.608329057693481
   },
   {
     "case_id": "C0050",
@@ -505,7 +505,7 @@
     "triage_score": 0.5441735419292109,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0051",
@@ -513,7 +513,7 @@
     "triage_score": 0.46588212380278626,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0052",
@@ -521,7 +521,7 @@
     "triage_score": 0.4816787385604365,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0053",
@@ -529,7 +529,7 @@
     "triage_score": 0.034580425382872274,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0054",
@@ -537,7 +537,7 @@
     "triage_score": 0.2074989308072469,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0055",
@@ -545,7 +545,7 @@
     "triage_score": 0.22155240274544422,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0056",
@@ -553,7 +553,7 @@
     "triage_score": 0.1189323899635418,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0057",
@@ -561,7 +561,7 @@
     "triage_score": 0.14328655153576805,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0058",
@@ -569,7 +569,7 @@
     "triage_score": 0.329481707130579,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0059",
@@ -577,7 +577,7 @@
     "triage_score": 0.09185686939021119,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0060",
@@ -585,7 +585,7 @@
     "triage_score": 0.4073092193129218,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0061",
@@ -593,7 +593,7 @@
     "triage_score": 0.7167588296540168,
     "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0062",
@@ -601,7 +601,7 @@
     "triage_score": 0.7280333097065151,
     "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0063",
@@ -609,7 +609,7 @@
     "triage_score": 0.4892645893599317,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0064",
@@ -617,7 +617,7 @@
     "triage_score": 0.329954604287011,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0065",
@@ -625,7 +625,7 @@
     "triage_score": 0.569939097778081,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0066",
@@ -633,7 +633,7 @@
     "triage_score": 0.3026464964699867,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0067",
@@ -641,7 +641,7 @@
     "triage_score": 0.12888694984115948,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0068",
@@ -649,7 +649,7 @@
     "triage_score": 0.24867177460715856,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0069",
@@ -657,7 +657,7 @@
     "triage_score": 0.2736801408812471,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0070",
@@ -665,7 +665,7 @@
     "triage_score": 0.9256241715656471,
     "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0071",
@@ -673,7 +673,7 @@
     "triage_score": 0.6283700416863475,
     "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0072",
@@ -681,7 +681,7 @@
     "triage_score": 0.28499002779581123,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0073",
@@ -689,7 +689,7 @@
     "triage_score": 0.05693586674541724,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0074",
@@ -697,7 +697,7 @@
     "triage_score": 0.04220163993411919,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0075",
@@ -705,7 +705,7 @@
     "triage_score": 0.33111742104746433,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0076",
@@ -713,7 +713,7 @@
     "triage_score": 0.33021470295482724,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0077",
@@ -721,7 +721,7 @@
     "triage_score": 0.3847531396174554,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0078",
@@ -729,7 +729,7 @@
     "triage_score": 0.17162837157791672,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0079",
@@ -737,7 +737,7 @@
     "triage_score": 0.5068543076699118,
     "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 2.730095863342285
+    "scenario_time": 2.79892897605896
   },
   {
     "case_id": "C0080",
@@ -747,17 +747,17 @@
     "triage_score": 0.5799228689822641,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0081",
     "radiology": 0.0001,
     "labs": 0.1783,
     "notes": 0.1791,
-    "triage_score": 0.08934219234826159,
+    "triage_score": 0.08934219203903339,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0082",
@@ -767,7 +767,7 @@
     "triage_score": 0.6716427548896424,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0083",
@@ -777,7 +777,7 @@
     "triage_score": 0.6081415291647888,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0084",
@@ -787,257 +787,257 @@
     "triage_score": 0.6912025433366465,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0085",
     "radiology": 0.9622,
     "labs": 0.2645,
     "notes": 0.0586,
-    "triage_score": 0.5721866224449715,
+    "triage_score": 0.5721866634231648,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0086",
     "radiology": 0.9988,
     "labs": 0.3978,
     "notes": 0.0188,
-    "triage_score": 0.6224982456127996,
+    "triage_score": 0.6224982366721029,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0087",
     "radiology": 0.9961,
     "labs": 0.6441,
     "notes": 0.0124,
-    "triage_score": 0.6937333372393083,
+    "triage_score": 0.6937333361217212,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0088",
     "radiology": 0.6327,
     "labs": 0.3661,
     "notes": 0.986,
-    "triage_score": 0.6234084044167986,
+    "triage_score": 0.6234071527192583,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0089",
     "radiology": 0.9942,
     "labs": 0.5563,
     "notes": 0.9764,
-    "triage_score": 0.8592607712125543,
+    "triage_score": 0.8592607831334832,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0090",
     "radiology": 1.0,
     "labs": 0.1599,
     "notes": 0.7335,
-    "triage_score": 0.6946647014252252,
+    "triage_score": 0.6946646775833674,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0091",
     "radiology": 1.0,
     "labs": 0.1801,
     "notes": 0.1246,
-    "triage_score": 0.5789556169306871,
+    "triage_score": 0.5789556020295259,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0092",
     "radiology": 0.0101,
     "labs": 0.2646,
     "notes": 0.0133,
-    "triage_score": 0.08710905139403644,
+    "triage_score": 0.08710901898401084,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0093",
     "radiology": 0.9999,
     "labs": 0.5665,
     "notes": 0.0531,
-    "triage_score": 0.6805377864210562,
+    "triage_score": 0.6805377573637919,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0094",
     "radiology": 0.2269,
     "labs": 0.3883,
     "notes": 0.0453,
-    "triage_score": 0.23898306816172835,
+    "triage_score": 0.23898305773091552,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0095",
     "radiology": 0.9919,
     "labs": 0.7136,
     "notes": 0.0046,
-    "triage_score": 0.710966241026807,
+    "triage_score": 0.7109662397229555,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0096",
     "radiology": 0.9999,
     "labs": 0.1477,
     "notes": 0.0331,
-    "triage_score": 0.5508966237967133,
+    "triage_score": 0.5508966118757844,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0097",
     "radiology": 0.9963,
     "labs": 0.4158,
     "notes": 0.0663,
-    "triage_score": 0.6361488776882702,
+    "triage_score": 0.6361488747080379,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0098",
     "radiology": 0.9999,
     "labs": 0.7558,
     "notes": 0.0594,
-    "triage_score": 0.73858430689165,
+    "triage_score": 0.7385843016762436,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0099",
     "radiology": 1.0,
     "labs": 0.7011,
     "notes": 0.2094,
-    "triage_score": 0.7522102906388576,
+    "triage_score": 0.7522102310342128,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0100",
     "radiology": 0.0064,
     "labs": 0.6427,
     "notes": 0.1203,
-    "triage_score": 0.2200398869020782,
+    "triage_score": 0.2200398794514976,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0101",
     "radiology": 1.0,
     "labs": 0.8876,
     "notes": 0.0439,
-    "triage_score": 0.7750641287776211,
+    "triage_score": 0.7750641250523308,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0102",
     "radiology": 0.999,
     "labs": 0.139,
     "notes": 0.1608,
-    "triage_score": 0.5733544462489132,
+    "triage_score": 0.5733544402884487,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0103",
     "radiology": 0.9939,
     "labs": 0.0992,
     "notes": 0.1349,
-    "triage_score": 0.5536770339624729,
+    "triage_score": 0.5536770458834019,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0104",
     "radiology": 0.8456,
     "labs": 0.9815,
     "notes": 0.2855,
-    "triage_score": 0.7743492842807036,
+    "triage_score": 0.7743492365969877,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0105",
     "radiology": 0.0484,
     "labs": 0.2078,
     "notes": 0.3401,
-    "triage_score": 0.15459555750681986,
+    "triage_score": 0.15459546884491074,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0106",
     "radiology": 0.9985,
     "labs": 0.758,
     "notes": 0.9227,
-    "triage_score": 0.9111670713250808,
+    "triage_score": 0.9111670594041518,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0107",
     "radiology": 0.0205,
     "labs": 0.2193,
     "notes": 0.0542,
-    "triage_score": 0.0868872980893545,
+    "triage_score": 0.0868872880310707,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0108",
     "radiology": 0.9999,
     "labs": 0.4277,
     "notes": 0.0512,
-    "triage_score": 0.6385163594869314,
+    "triage_score": 0.6385163401154219,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0109",
     "radiology": 0.0888,
     "labs": 0.7029,
     "notes": 0.0819,
-    "triage_score": 0.27160433003064177,
+    "triage_score": 0.2716039537763216,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0110",
@@ -1047,7 +1047,7 @@
     "triage_score": 0.08168052473510168,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0111",
@@ -1057,7 +1057,7 @@
     "triage_score": 0.22717162569214872,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0112",
@@ -1067,7 +1067,7 @@
     "triage_score": 0.11513585494343329,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0113",
@@ -1077,7 +1077,7 @@
     "triage_score": 0.5735948239365567,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0114",
@@ -1087,37 +1087,37 @@
     "triage_score": 0.6513660166004891,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0115",
     "radiology": 0.7155,
     "labs": 0.701,
     "notes": 0.0292,
-    "triage_score": 0.5738775912201387,
+    "triage_score": 0.5738780874288064,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0116",
     "radiology": 0.9995,
     "labs": 0.2664,
     "notes": 0.0817,
-    "triage_score": 0.5959883875358225,
+    "triage_score": 0.5959883651840807,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0117",
     "radiology": 0.9307,
     "labs": 0.1938,
     "notes": 0.0105,
-    "triage_score": 0.5255643012930309,
+    "triage_score": 0.5255643618289982,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0118",
@@ -1127,77 +1127,77 @@
     "triage_score": 0.6511998827766964,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0119",
     "radiology": 0.0525,
     "labs": 0.1503,
     "notes": 0.0927,
-    "triage_score": 0.0899014119770992,
+    "triage_score": 0.08990127786664845,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0120",
     "radiology": 0.9998,
     "labs": 0.214,
     "notes": 0.7701,
-    "triage_score": 0.7181220507453205,
+    "triage_score": 0.7181219672988178,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0121",
     "radiology": 1.0,
     "labs": 0.3275,
     "notes": 0.0275,
-    "triage_score": 0.6037401999712171,
+    "triage_score": 0.6037401936382236,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0122",
     "radiology": 0.9981,
     "labs": 0.7387,
     "notes": 0.0202,
-    "triage_score": 0.7246884212574837,
+    "triage_score": 0.7246884126893159,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0123",
     "radiology": 0.9987,
     "labs": 0.1319,
     "notes": 0.0586,
-    "triage_score": 0.5506267298466601,
+    "triage_score": 0.550626717180673,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0124",
     "radiology": 0.1283,
     "labs": 0.267,
     "notes": 0.2677,
-    "triage_score": 0.19780797577578021,
+    "triage_score": 0.1978080040879865,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0125",
     "radiology": 1.0,
     "labs": 0.5731,
     "notes": 0.0241,
-    "triage_score": 0.6767604220098655,
+    "triage_score": 0.6767604208922785,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0126",
@@ -1207,267 +1207,267 @@
     "triage_score": 0.6700357719525863,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0127",
     "radiology": 0.0254,
     "labs": 0.5965,
     "notes": 0.093,
-    "triage_score": 0.21026778115301537,
+    "triage_score": 0.2102677528408091,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0128",
     "radiology": 0.9592,
     "labs": 0.481,
     "notes": 0.069,
-    "triage_score": 0.6376919477580991,
+    "triage_score": 0.6376919298767058,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0129",
     "radiology": 0.003,
     "labs": 0.525,
     "notes": 0.0203,
-    "triage_score": 0.1630396740514166,
+    "triage_score": 0.1630396703261263,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0130",
     "radiology": 1.0,
     "labs": 0.9061,
     "notes": 0.0533,
-    "triage_score": 0.7824527183980379,
+    "triage_score": 0.7824527057320508,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0131",
     "radiology": 0.9606,
     "labs": 0.8357,
     "notes": 0.5679,
-    "triage_score": 0.8445568952133133,
+    "triage_score": 0.8445569309761002,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0132",
     "radiology": 1.0,
     "labs": 0.4001,
     "notes": 0.2271,
-    "triage_score": 0.6654593434438116,
+    "triage_score": 0.6654593136414892,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0133",
     "radiology": 0.9809,
     "labs": 0.1157,
     "notes": 0.0124,
-    "triage_score": 0.5276360096842667,
+    "triage_score": 0.527635888239803,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0134",
     "radiology": 1.0,
     "labs": 0.2451,
     "notes": 0.03,
-    "triage_score": 0.5795245330185667,
+    "triage_score": 0.5795245188624635,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0135",
     "radiology": 0.9997,
     "labs": 0.4564,
     "notes": 0.03,
-    "triage_score": 0.6427865789334337,
+    "triage_score": 0.6427865759532014,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0136",
     "radiology": 0.9999,
     "labs": 0.6336,
     "notes": 0.0749,
-    "triage_score": 0.7050036262055728,
+    "triage_score": 0.7050036500474307,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0137",
     "radiology": 1.0,
     "labs": 0.5647,
     "notes": 0.0122,
-    "triage_score": 0.6718597395658775,
+    "triage_score": 0.6718597384482904,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0138",
     "radiology": 0.9998,
     "labs": 0.3059,
     "notes": 0.6241,
-    "triage_score": 0.7164492824816951,
+    "triage_score": 0.7164492347979794,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0139",
     "radiology": 1.0,
     "labs": 0.1665,
     "notes": 0.0803,
-    "triage_score": 0.5659902288204753,
+    "triage_score": 0.5659902347809398,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0140",
     "radiology": 0.0079,
     "labs": 0.2259,
     "notes": 0.0578,
-    "triage_score": 0.08327360999999087,
+    "triage_score": 0.08327355486569446,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0141",
     "radiology": 0.9974,
     "labs": 0.625,
     "notes": 0.009,
-    "triage_score": 0.6880138597717337,
+    "triage_score": 0.6880138590266756,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0142",
     "radiology": 0.2642,
     "labs": 0.8732,
     "notes": 0.027,
-    "triage_score": 0.39947059320485234,
+    "triage_score": 0.3994702407923901,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0143",
     "radiology": 0.1798,
     "labs": 0.1834,
     "notes": 0.0424,
-    "triage_score": 0.1533778686462759,
+    "triage_score": 0.153378319406402,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0144",
     "radiology": 0.9996,
     "labs": 0.3727,
     "notes": 0.1344,
-    "triage_score": 0.6384749500244041,
+    "triage_score": 0.6384749291627785,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0145",
     "radiology": 0.2025,
     "labs": 0.2915,
     "notes": 0.0664,
-    "triage_score": 0.20199718279930698,
+    "triage_score": 0.20199848665091144,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0146",
     "radiology": 0.974,
     "labs": 0.1642,
     "notes": 0.0395,
-    "triage_score": 0.5441651479336813,
+    "triage_score": 0.5441651665601328,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0147",
     "radiology": 1.0,
     "labs": 0.5025,
     "notes": 0.0137,
-    "triage_score": 0.6534707778677918,
+    "triage_score": 0.6534707763776757,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0148",
     "radiology": 1.0,
     "labs": 0.5655,
     "notes": 0.0908,
-    "triage_score": 0.6878089540541552,
+    "triage_score": 0.6878089331925296,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0149",
     "radiology": 0.9994,
     "labs": 0.4024,
     "notes": 0.0292,
-    "triage_score": 0.6262408948915813,
+    "triage_score": 0.6262408878135297,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0150",
     "radiology": 0.0036,
     "labs": 0.4828,
     "notes": 0.6749,
-    "triage_score": 0.2816257268377545,
+    "triage_score": 0.2816256869305822,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0151",
     "radiology": 0.345,
     "labs": 0.7719,
     "notes": 0.9528,
-    "triage_score": 0.5946284262994326,
+    "triage_score": 0.5946298895934617,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0152",
     "radiology": 0.9927,
     "labs": 0.5567,
     "notes": 0.0519,
-    "triage_score": 0.6737444017525895,
+    "triage_score": 0.6737444501813634,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0153",
@@ -1477,27 +1477,27 @@
     "triage_score": 0.8145758357965173,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0154",
     "radiology": 0.0005,
     "labs": 0.7066,
     "notes": 0.9487,
-    "triage_score": 0.40199077247486825,
+    "triage_score": 0.4019907506993823,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0155",
     "radiology": 0.0574,
     "labs": 0.9608,
     "notes": 0.9491,
-    "triage_score": 0.5067696809041808,
+    "triage_score": 0.5067698634434055,
     "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0156",
@@ -1507,7 +1507,7 @@
     "triage_score": 0.805038901961618,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0157",
@@ -1517,7 +1517,7 @@
     "triage_score": 0.6884281392774196,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0158",
@@ -1527,7 +1527,7 @@
     "triage_score": 0.7426915639558695,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0159",
@@ -1537,156 +1537,156 @@
     "triage_score": 0.6736680050268044,
     "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 17.57864022254944
+    "scenario_time": 1.4706759452819824
   },
   {
     "case_id": "C0160",
     "radiology": 0.9993,
     "labs": 0.2841,
     "notes": 0.1818,
-    "triage_score": 0.6212161353299926,
+    "triage_score": 0.6212160936067413,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0161",
     "radiology": 0.0495,
     "labs": 0.5902,
     "notes": 0.0246,
-    "triage_score": 0.20676334623101356,
+    "triage_score": 0.20676334399583937,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0162",
     "radiology": 0.7167,
     "labs": 0.4659,
     "notes": 0.0175,
-    "triage_score": 0.5015971400172226,
+    "triage_score": 0.5015971366644613,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0163",
     "radiology": 1.0,
     "labs": 0.3672,
     "notes": 0.0299,
-    "triage_score": 0.6161076225193625,
+    "triage_score": 0.6161076143237239,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0164",
     "radiology": 0.9287,
     "labs": 0.1042,
     "notes": 0.0775,
-    "triage_score": 0.5111020685064834,
+    "triage_score": 0.5111020655262511,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0165",
     "radiology": 0.0,
     "labs": 0.5751,
     "notes": 0.0745,
-    "triage_score": 0.18742772083549636,
+    "triage_score": 0.18742771785378617,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0166",
     "radiology": 0.007,
     "labs": 0.46,
     "notes": 0.7967,
-    "triage_score": 0.30084585288994653,
+    "triage_score": 0.3008457783375744,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0167",
     "radiology": 0.9985,
     "labs": 0.3509,
     "notes": 0.0068,
-    "triage_score": 0.6058582061848393,
+    "triage_score": 0.6058582035771362,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0168",
     "radiology": 1.0,
     "labs": 0.6677,
     "notes": 0.0864,
-    "triage_score": 0.7175593114311566,
+    "triage_score": 0.7175592846090665,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0169",
     "radiology": 0.979,
     "labs": 0.8526,
     "notes": 0.0744,
-    "triage_score": 0.7601503752204809,
+    "triage_score": 0.7601502947542105,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0170",
     "radiology": 1.0,
     "labs": 0.7345,
     "notes": 0.0505,
-    "triage_score": 0.7304443017792948,
+    "triage_score": 0.7304442876231916,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0171",
     "radiology": 1.0,
     "labs": 0.4705,
     "notes": 0.0585,
-    "triage_score": 0.6528436286571851,
+    "triage_score": 0.6528436025801531,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0172",
     "radiology": 0.0,
     "labs": 0.7081,
     "notes": 0.0657,
-    "triage_score": 0.22559861960346964,
+    "triage_score": 0.22559860768254067,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0173",
     "radiology": 0.9994,
     "labs": 0.784,
     "notes": 0.0405,
-    "triage_score": 0.7430026188919046,
+    "triage_score": 0.7430026017555692,
     "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   },
   {
     "case_id": "C0174",
     "radiology": 0.9999,
     "labs": 0.22,
     "notes": 0.0153,
-    "triage_score": 0.568982807900801,
+    "triage_score": 0.5689827455021885,
     "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 2.3641269207000732
+    "scenario_time": 2.298203945159912
   }
 ]
