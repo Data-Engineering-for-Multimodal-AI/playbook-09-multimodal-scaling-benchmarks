@@ -29,9 +29,8 @@ def load_real_sample_data(limit_per_modality: int = 25) -> tuple[List[Dict], Lis
         })
     
     # 2. Telemetry vitals (from Excel files)
-    tel_df1 = pd.read_excel("sample-data/telemetry_1.xlsx")
-    tel_df2 = pd.read_excel("sample-data/telemetry_2.xlsx") 
-    tel_df = pd.concat([tel_df1, tel_df2]).reset_index(drop=True)
+    # (telemetry_2.xlsx was a byte-identical copy of this file; concatenating them listed every patient twice)
+    tel_df = pd.read_excel("sample-data/telemetry_1.xlsx")
     
     telemetry_data = []
     vital_columns = ['Hematocrit', 'Hemoglobin', 'Platelets', 'Leukocytes', 'Lymphocytes', 'Monocytes']

@@ -27,7 +27,6 @@ pb-9-mm-pipeline-gpuscaling/
 - sample-data/                         # Medical sample data
     - radiology_metadata.csv           # Imaging study metadata
     - telemetry_1.xlsx                 # Patient vitals data
-    - telemetry_2.xlsx                 # Patient vitals data
     - mtsamples.csv                    # Clinical notes samples
     - chest_xray/                      # Radiology images
 ```
