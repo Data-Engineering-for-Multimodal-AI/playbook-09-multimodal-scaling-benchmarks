@@ -2,7 +2,7 @@
 
 Run with `make smoke` (or `uv run pytest -q`). CPU only, about 10 minutes the first time: trains the
 models on a small X-ray sample (ATLAS_XRAY_TRAIN_PER_CLASS=100) and downloads ResNet-18,
-all-MiniLM-L6-v2 and Qwen3-0.6B. The Modal app definitions are checked without running anything in
+all-MiniLM-L6-v2 and Qwen3-1.7B. The Modal app definitions are checked without running anything in
 the cloud (that needs a Modal account; see the README).
 """
 import json
