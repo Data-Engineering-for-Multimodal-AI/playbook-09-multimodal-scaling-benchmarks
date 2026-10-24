@@ -98,3 +98,9 @@ coverage.xml
 
 # pytest
 .pytest_cache/
+# Embedding cache and benchmark outputs
+.cache/
+results/
+
+# Local audit notes
+AUDIT.md
