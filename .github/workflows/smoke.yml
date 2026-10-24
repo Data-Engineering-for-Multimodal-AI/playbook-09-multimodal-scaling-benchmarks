@@ -29,6 +29,8 @@ jobs:
           key: models-resnet18-minilm-qwen3
       - name: Smoke test
         run: make smoke
+      - name: Local LLM advisor demo (output shown in the README)
+        run: uv run python local_llm_scaling_demo.py
       - name: Printed install line (plus torchvision) and the printed local commands
         run: |
           uv venv --seed --python ${{ matrix.python-version }} /tmp/pipenv
