@@ -16,7 +16,7 @@ SEED = 42
 
 # Pretrained encoders (downloaded on first use)
 TEXT_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-ADVISOR_MODEL = os.environ.get("ATLAS_ADVISOR_MODEL", "Qwen/Qwen3-0.6B")
+ADVISOR_MODEL = os.environ.get("ATLAS_ADVISOR_MODEL", "Qwen/Qwen3-1.7B")
 
 # Training: X-rays per class from the training folder (all 624 test images are always scored)
 XRAY_TRAIN_PER_CLASS = int(os.environ.get("ATLAS_XRAY_TRAIN_PER_CLASS", "500"))
