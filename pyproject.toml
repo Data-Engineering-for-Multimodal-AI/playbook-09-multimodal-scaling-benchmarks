@@ -17,7 +17,6 @@ dependencies = [
     "torchvision>=0.18",
     "sentence-transformers>=3.0",
     "transformers>=4.51",
-    "accelerate>=1.0",
     "requests>=2.31",
 ]
 
