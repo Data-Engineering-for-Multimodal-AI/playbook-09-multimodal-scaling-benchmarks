@@ -63,6 +63,8 @@ Each service runs as a pool of worker processes that behaves like a serverless f
 
 You need a [Modal](https://modal.com) account. Run `modal setup` once. GPUs need a payment method on the account; without one, use `ATLAS_GPU=none` (below).
 
+> **GPU path not run for this edition.** The default configuration (radiology on an A100 40 GB, the advisor on an L4) is written for Modal 1.x but was not run while testing this update: the test account had no payment method, which Modal requires for GPUs. Everything else on Modal was run on CPU containers (`ATLAS_GPU=none`, `ATLAS_ADVISOR_GPU=none`); see [Tested on](#tested-on). The code paths are the same apart from the device; on a GPU, expect shorter model compute times and a higher cost per second (A100 40 GB: $2.10 per hour, L4: $0.80 per hour at Modal's rates of 2026-10-24).
+
 ```bash
 modal deploy serverless_multimodal_pipeline.py
 modal run serverless_multimodal_pipeline.py::multimodal_inference_dag --cases 10
