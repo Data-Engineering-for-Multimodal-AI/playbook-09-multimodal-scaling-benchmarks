@@ -2,524 +2,215 @@
 """
 Serverless Multimodal Medical Inference Pipeline using Modal
 Demonstrates elastic GPU scaling with zero idle cost.
+
+    python train_models.py                       # once: trains models/ (the containers load them)
+    modal deploy serverless_multimodal_pipeline.py
+    modal run serverless_multimodal_pipeline.py::simulate_clinical_workload_bursts
+    modal run serverless_multimodal_pipeline.py::multimodal_inference_dag --cases 10
+
+Each modality is a Modal class with its own resources and autoscaling:
+- RadiologyService: GPU (A100 40 GB by default; ATLAS_GPU=T4, L4, ... or none), ResNet-18 + pneumonia model
+- LabsService: 2 CPU cores, admission model on blood counts
+- NotesService: 4 CPU cores, MiniLM + pulmonary-note model
+Containers load their model once (@modal.enter: the cold start), scale out with the number of
+pending requests and stop after their scaledown_window of idle time (zero idle cost).
+
+The same benchmark runs locally without Modal: python run_serverless_demo.py
 """
+import json
+import os
+import time
+from typing import Dict, List
 
 import modal
-import numpy as np
-import pandas as pd
-import torch
-import torch.nn as nn
-import json
-import time
-from typing import List, Dict, Tuple, Any
-from dataclasses import dataclass
-import logging
 
-# Modal app definition
 app = modal.App("atlas-health-multimodal")
 
-# Define container images with dependencies and include sample data
-gpu_image = modal.Image.debian_slim(python_version="3.11").pip_install(
-    "torch", "numpy", "pandas", "scikit-learn"
-).add_local_dir("./sample-data", "/root/sample-data")
-
-cpu_image = modal.Image.debian_slim(python_version="3.11").pip_install(
-    "sentence-transformers", "numpy", "pandas", "scikit-learn", "transformers", "openpyxl"
-).add_local_dir("./sample-data", "/root/sample-data")
-
-# Data loading utilities (shared across functions)
-@dataclass
-class RadiologyRecord:
-    study_id: str
-    study_type: str  # CT, MRI, XRay
-    diagnosis: str
-    slice_count: int
-
-@dataclass 
-class TelemetryRecord:
-    patient_id: str
-    age_quantile: int
-    vitals: Dict[str, Any]
-
-@dataclass
-class ClinicalNote:
-    note_id: str
-    medical_specialty: str
-    note: str
-
-# =============================================================================
-# SERVERLESS FUNCTIONS - Each with specific resource allocation
-# =============================================================================
-
-@app.function(
-    gpu="A100",           # Request A100 GPU
-    memory=8192,          # 8GB RAM
-    timeout=300,          # 5 minute timeout
-    image=gpu_image,
-    container_idle_timeout=60  # Tear down after 60s idle
-)
-def encode_radiology_batch(metadata_batch: List[Dict]) -> np.ndarray:
-    """
-    GPU-intensive radiology encoder that spins up A100 on demand.
-    Processes structured metadata into neural embeddings.
-    """
-    print(f"GPU Function: Processing {len(metadata_batch)} radiology records on A100")
-    start_time = time.time()
-    
-    # Initialize neural network encoder
-    class RadiologyEncoder(nn.Module):
-        def __init__(self, embed_dim=64):
-            super().__init__()
-            # Diagnosis and study type vocabularies
-            self.diagnoses = ['Normal', 'Pneumonia', 'COVID-19', 'Tumor', 'Stroke', 
-                             'Fracture', 'COPD', 'Fibrosis', 'Hemorrhage', 'MS Lesion']
-            self.study_types = ['CT', 'MRI', 'XRay']
-            
-            # Embedding layers
-            self.diagnosis_embed = nn.Embedding(len(self.diagnoses), embed_dim // 2)
-            self.study_type_embed = nn.Embedding(len(self.study_types), embed_dim // 4)
-            
-            # Dense fusion network
-            self.fc = nn.Sequential(
-                nn.Linear(embed_dim // 2 + embed_dim // 4 + 1, embed_dim),
-                nn.ReLU(),
-                nn.Linear(embed_dim, embed_dim),
-                nn.ReLU()
-            )
-            
-        def encode_diagnosis(self, diagnosis: str) -> int:
-            return self.diagnoses.index(diagnosis) if diagnosis in self.diagnoses else 0
-        
-        def encode_study_type(self, study_type: str) -> int:
-            return self.study_types.index(study_type) if study_type in self.study_types else 0
-        
-        def forward(self, records):
-            device = next(self.parameters()).device
-            
-            diagnoses = torch.tensor([self.encode_diagnosis(r["diagnosis"]) for r in records], device=device)
-            study_types = torch.tensor([self.encode_study_type(r["study_type"]) for r in records], device=device)
-            slice_counts = torch.tensor([r["slice_count"] / 350.0 for r in records], device=device).unsqueeze(1)
-            
-            diag_embed = self.diagnosis_embed(diagnoses)
-            study_embed = self.study_type_embed(study_types)
-            
-            combined = torch.cat([diag_embed, study_embed, slice_counts], dim=1)
-            return self.fc(combined)
-    
-    # Move to GPU and encode
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    encoder = RadiologyEncoder().to(device)
-    encoder.eval()
-    
-    with torch.no_grad():
-        embeddings = encoder(metadata_batch).cpu().numpy()
-    
-    processing_time = time.time() - start_time
-    print(f"GPU Function: Completed in {processing_time:.3f}s on {device}")
-    print(f"GPU Function: Generated embeddings shape: {embeddings.shape}")
-    
-    return embeddings
+# GPU for the radiology service. "none" runs it on 4 CPU cores instead (Modal accounts without a
+# payment method can't use GPUs).
+GPU = os.environ.get("ATLAS_GPU", "A100-40GB")
+GPU_OPTIONS = {"gpu": None, "cpu": 4} if GPU.lower() in ("none", "cpu", "") else {"gpu": GPU}
+REMOTE_ROOT = "/root/atlas"
 
 
-@app.function(
-    cpu=2,                # 2 CPU cores
-    memory=4096,          # 4GB RAM
-    timeout=120,          # 2 minute timeout
-    image=cpu_image,
-    container_idle_timeout=30
-)
-def encode_telemetry_batch(vitals_batch: List[Dict]) -> np.ndarray:
-    """
-    CPU-based telemetry encoder for time series vitals and lab values.
-    Processes physiological signals into statistical features.
-    """
-    print(f"CPU Function: Processing {len(vitals_batch)} telemetry records")
-    start_time = time.time()
-    
-    features = []
-    for record in vitals_batch:
-        vitals = record["vitals"]
-        feature_vector = []
-        
-        # Time series aggregation
-        heart_rate = vitals.get("heart_rate", [75] * 10)
-        spo2 = vitals.get("spo2", [98] * 10)
-        
-        # Statistical features
-        feature_vector.extend([
-            np.mean(heart_rate), np.std(heart_rate),
-            np.mean(spo2), np.std(spo2)
-        ])
-        
-        # Laboratory values
-        lab_features = [
-            vitals.get("hematocrit", 40.0),
-            vitals.get("hemoglobin", 14.0),
-            vitals.get("platelets", 250000.0),
-            vitals.get("leukocytes", 7000.0),
-            vitals.get("lymphocytes", 2500.0),
-            vitals.get("monocytes", 500.0)
-        ]
-        feature_vector.extend(lab_features)
-        
-        # Demographics
-        feature_vector.append(record.get("age_quantile", 10))
-        
-        features.append(feature_vector)
-    
-    # Standardization
-    features = np.array(features)
-    features = (features - features.mean(axis=0)) / (features.std(axis=0) + 1e-8)
-    
-    processing_time = time.time() - start_time
-    print(f"CPU Function: Completed in {processing_time:.3f}s")
-    print(f"CPU Function: Generated features shape: {features.shape}")
-    
-    return features
-
-
-@app.function(
-    cpu=4,                # 4 CPU cores for transformer inference
-    memory=8192,          # 8GB RAM for model weights
-    timeout=180,          # 3 minute timeout
-    image=cpu_image,
-    container_idle_timeout=45
-)
-def encode_clinical_notes_batch(notes_batch: List[Dict]) -> np.ndarray:
-    """
-    CPU-based text encoder using sentence transformers.
-    Processes clinical narratives into semantic embeddings.
-    """
-    print(f"CPU Function: Processing {len(notes_batch)} clinical notes")
-    start_time = time.time()
-    
+def _download_weights():
+    """Bake the pretrained weights into the image so cold starts don't download them."""
+    import torchvision
     from sentence_transformers import SentenceTransformer
-    
-    # Load pre-trained transformer
-    model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-    
-    # Extract and preprocess text
-    texts = []
-    for record in notes_batch:
-        text = record["note"][:1000]  # Truncate for efficiency
-        texts.append(text)
-    
-    # Generate embeddings
-    embeddings = model.encode(texts, show_progress_bar=False, device='cpu')
-    
-    processing_time = time.time() - start_time
-    print(f"CPU Function: Completed in {processing_time:.3f}s")
-    print(f"CPU Function: Generated embeddings shape: {embeddings.shape}")
-    
-    return embeddings
+    torchvision.models.resnet18(weights=torchvision.models.ResNet18_Weights.DEFAULT)
+    SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 
-@app.function(
-    cpu=1,                # Light compute for fusion
-    memory=2048,          # 2GB RAM
-    timeout=60,           # 1 minute timeout
-    image=cpu_image
+# One image for all three services: the libraries, the pretrained weights, the trained models,
+# the X-ray test images the workload sends (not the 1.1 GB training set) and the shared code
+image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .uv_pip_install("torch==2.14.1", "torchvision==0.29.1", "sentence-transformers==6.2.0",
+                    "transformers==5.20.2", "scikit-learn==1.9.1", "pandas==3.1.0", "openpyxl==3.1.5",
+                    "joblib==1.6.0", "pillow==13.0.0", "numpy==2.5.4")
+    .run_function(_download_weights)
+    .env({"ATLAS_ROOT": REMOTE_ROOT, "TOKENIZERS_PARALLELISM": "false"})
+    .add_local_dir("models", f"{REMOTE_ROOT}/models")
+    .add_local_dir("sample-data/chest_xray/test", f"{REMOTE_ROOT}/sample-data/chest_xray/test")
+    .add_local_python_source("atlas_pipeline")
 )
-def fuse_modalities(radiology_embeds: np.ndarray, 
-                   telemetry_embeds: np.ndarray, 
-                   text_embeds: np.ndarray,
-                   patient_ids: List[str]) -> List[Dict]:
-    """
-    Fusion function that combines all modality embeddings and generates triage scores.
-    """
-    print(f"Fusion Function: Combining modalities for {len(patient_ids)} patients")
-    start_time = time.time()
-    
-    from sklearn.linear_model import LogisticRegression
-    
-    # Concatenate all embeddings
-    combined_features = np.concatenate([
-        radiology_embeds, telemetry_embeds, text_embeds
-    ], axis=1)
-    
-    print(f"Combined feature dimension: {combined_features.shape[1]}")
-    
-    # Simple logistic regression for triage scoring
-    # In practice, this would be a pre-trained model
-    synthetic_labels = (combined_features.mean(axis=1) > combined_features.mean()).astype(int)
-    classifier = LogisticRegression(random_state=42, max_iter=1000)
-    classifier.fit(combined_features, synthetic_labels)
-    
-    # Generate triage scores
-    triage_scores = classifier.predict_proba(combined_features)[:, 1]
-    
-    # Format results
-    results = []
-    for i, patient_id in enumerate(patient_ids):
-        results.append({
-            "patient_id": patient_id,
-            "triage_score": float(triage_scores[i]),
-            "timestamp": time.time(),
-            "modality_dims": {
-                "radiology": radiology_embeds.shape[1],
-                "telemetry": telemetry_embeds.shape[1], 
-                "text": text_embeds.shape[1]
-            }
-        })
-    
-    processing_time = time.time() - start_time
-    print(f"Fusion Function: Completed in {processing_time:.3f}s")
-    
-    return results
 
 
-# =============================================================================
-# DAG ORCHESTRATION - Chains functions into inference pipeline
-# =============================================================================
+class _Container:
+    """What each service does: load the model once per container, then score batches."""
+    modality = None
+
+    def _load(self):
+        from atlas_pipeline.encoders import ModalityService
+        self.started = time.time()
+        self.service = ModalityService(self.modality)
+        self.ready = time.time()
+        self.served = 0
+
+    def _score(self, items: List) -> Dict:
+        out = self.service.score(items)
+        out.update(worker_id=os.environ.get("MODAL_TASK_ID", "local"), first_request=self.served == 0,
+                   container_started=self.started, container_ready=self.ready,
+                   load_seconds=self.service.load_seconds)
+        self.served += 1
+        return out
+
+
+@app.cls(**GPU_OPTIONS, memory=8192, timeout=300, scaledown_window=60, max_containers=10, image=image)
+class RadiologyService(_Container):
+    modality = "radiology"
+
+    @modal.enter()
+    def load(self):
+        self._load()
+
+    @modal.method()
+    def score(self, xray_paths: List[str]) -> Dict:
+        return self._score(xray_paths)
+
+
+@app.cls(cpu=2, memory=4096, timeout=120, scaledown_window=30, max_containers=10, image=image)
+class LabsService(_Container):
+    modality = "labs"
+
+    @modal.enter()
+    def load(self):
+        self._load()
+
+    @modal.method()
+    def score(self, lab_vectors: List[List[float]]) -> Dict:
+        return self._score(lab_vectors)
+
+
+@app.cls(cpu=4, memory=8192, timeout=180, scaledown_window=45, max_containers=10, image=image)
+class NotesService(_Container):
+    modality = "notes"
+
+    @modal.enter()
+    def load(self):
+        self._load()
+
+    @modal.method()
+    def score(self, notes: List[str]) -> Dict:
+        return self._score(notes)
+
+
+SERVICES = {"radiology": RadiologyService, "labs": LabsService, "notes": NotesService}
+SCALEDOWN = {"radiology": 60, "labs": 30, "notes": 45}
+
+
+class ModalBackend:
+    """The benchmark's interface (see atlas_pipeline/benchmark.py) on Modal containers."""
+
+    name = "modal"
+
+    def __init__(self, services: Dict = None):
+        self.services = services or {m: cls() for m, cls in SERVICES.items()}
+        self.containers = {m: {} for m in self.services}
+
+    def call(self, modality: str, items: List) -> Dict:
+        submitted = time.time()
+        out = self.services[modality].score.remote(items)
+        finished = time.time()
+        out["latency_seconds"] = finished - submitted
+        c = self.containers[modality].setdefault(out["worker_id"], {
+            "id": out["worker_id"], "started": out["container_started"], "ready": out["container_ready"],
+            "load_seconds": out["load_seconds"]})
+        c["last_active"] = max(c.get("last_active", 0), finished)
+        return out
+
+    def prewarm(self, modality: str, n: int) -> None:
+        """Keep n containers running (min_containers), then wait until they have loaded."""
+        self.services[modality].score.autoscaler.update(min_containers=n)
+        # Each warm container answers immediately; send n parallel requests to make sure they're up
+        if n:
+            list(self.services[modality].score.map([[]] * n))
+
+    def workers(self) -> Dict[str, List[Dict]]:
+        """Container lifetimes: from start until the last request plus the scaledown window."""
+        return {m: [dict(c, stopped=c["last_active"] + SCALEDOWN[m]) for c in cs.values()]
+                for m, cs in self.containers.items()}
+
+    def wait_for_scale_down(self) -> None:
+        """Containers stop on their own; their idle time is counted in workers()."""
+
 
 @app.local_entrypoint()
-def multimodal_inference_dag(radiology_data: List[Dict], 
-                           telemetry_data: List[Dict], 
-                           clinical_notes: List[Dict]) -> List[Dict]:
+def simulate_clinical_workload_bursts(pause: int = 30, batch_size: int = 5):
     """
-    Main inference DAG that orchestrates the multimodal pipeline.
-    
-    This function demonstrates:
-    1. Parallel execution of modality encoders
-    2. GPU spinning up only for radiology workload
-    3. CPU scaling independently for telemetry and text
-    4. Automatic teardown when idle
+    The four clinical workload scenarios on Modal: morning imaging surge (GPU burst), telemetry
+    stream (CPU steady), evening mixed burst and weekend light load, with a pause between them so
+    containers can scale down. Watch the app in the Modal dashboard while it runs.
     """
-    print(f"Starting multimodal inference DAG")
-    print(f"   Radiology records: {len(radiology_data)}")
-    print(f"   Telemetry records: {len(telemetry_data)}")
-    print(f"   Clinical notes: {len(clinical_notes)}")
-    
-    dag_start = time.time()
-    
-    # Step 1: Launch parallel encoding functions
-    print("\nStep 1: Launching parallel modality encoders...")
-    
-    # These function calls will:
-    # - Spin up A100 GPU for radiology (cold start ~10-30s)
-    # - Spin up CPU containers for telemetry and text
-    # - Execute in parallel once containers are ready
-    radiology_future = encode_radiology_batch.remote(radiology_data)
-    telemetry_future = encode_telemetry_batch.remote(telemetry_data) 
-    text_future = encode_clinical_notes_batch.remote(clinical_notes)
-    
-    print("   Waiting for modality encoders to complete...")
-    
-    # Step 2: Collect results (this blocks until all functions complete)
-    radiology_embeds = radiology_future
-    telemetry_embeds = telemetry_future
-    text_embeds = text_future
-    
-    print("   All modality encoders completed")
-    
-    # Step 3: Fusion step
-    print("\nStep 2: Fusion and scoring...")
-    patient_ids = [f"P{i:03d}" for i in range(len(radiology_data))]
-    
-    results = fuse_modalities.remote(
-        radiology_embeds, telemetry_embeds, text_embeds, patient_ids
-    )
-    
-    total_time = time.time() - dag_start
-    print(f"\nDAG completed in {total_time:.2f}s")
-    print(f"   Average triage score: {np.mean([r['triage_score'] for r in results]):.3f}")
-    
+    from atlas_pipeline import benchmark
+
+    print("Atlas Health Clinical Workload Simulation (Modal)")
+    print("=" * 60)
+    print(f"Radiology: {GPU_OPTIONS}")
+    results = benchmark.run_benchmark(ModalBackend(), pause=pause, batch_size=batch_size,
+                                      resources=benchmark.resources_for(GPU))
+    os.makedirs("results", exist_ok=True)
+    benchmark.save(results, "results/modal_benchmark.json")
+    with open("serverless_scaling_results.json", "w") as f:
+        json.dump([t | {"scenario": s["scenario"], "scenario_time": s["wall_seconds"]}
+                   for s in results["scenarios"] for t in s["triage"]], f, indent=2)
+    print("\nResults saved to results/modal_benchmark.json and serverless_scaling_results.json")
+    print("Billed cost (appears within a few minutes): modal billing report --for today")
     return results
 
 
-# =============================================================================
-# WORKLOAD BURST SIMULATION - Tests elastic scaling behavior
-# =============================================================================
-
-@app.function(
-    cpu=1,
-    memory=2048,  # Increased memory for data loading
-    image=cpu_image
-)
-def load_sample_workload(scenario: str, size: int) -> Tuple[List[Dict], List[Dict], List[Dict]]:
+@app.local_entrypoint()
+def multimodal_inference_dag(cases: int = 10):
     """
-    Load real sample data from medical datasets.
+    Score `cases` triage cases: the three encoders run in parallel (.spawn), then the scores are fused.
     """
-    print(f"Loading {scenario} workload with {size} samples from real medical data")
-    
-    # Load radiology data from CSV
-    radiology_df = pd.read_csv("/root/sample-data/radiology_metadata.csv")
-    radiology_data = []
-    
-    # Sample or repeat data to match requested size
-    for i in range(min(size, len(radiology_df))):
-        row = radiology_df.iloc[i % len(radiology_df)]
-        radiology_data.append({
-            "study_id": str(row["study_id"]).zfill(3),
-            "study_type": row["study_type"],
-            "diagnosis": row["diagnosis"],
-            "slice_count": int(row["slice_count"])
-        })
-    
-    # Load telemetry data from Excel
-    telemetry_df = pd.read_excel("/root/sample-data/telemetry_1.xlsx")
-    telemetry_data = []
-    
-    for i in range(min(size, len(telemetry_df))):
-        row = telemetry_df.iloc[i % len(telemetry_df)]
-        
-        # Extract key vitals and lab values, handling NaN values
-        vitals = {}
-        
-        # Basic vitals (simulated time series from single values)
-        if not pd.isna(row.get("Hematocrit", np.nan)):
-            vitals["hematocrit"] = float(row["Hematocrit"])
-        if not pd.isna(row.get("Hemoglobin", np.nan)):
-            vitals["hemoglobin"] = float(row["Hemoglobin"])
-        if not pd.isna(row.get("Platelets", np.nan)):
-            vitals["platelets"] = float(row["Platelets"])
-        if not pd.isna(row.get("Leukocytes", np.nan)):
-            vitals["leukocytes"] = float(row["Leukocytes"])
-        if not pd.isna(row.get("Lymphocytes", np.nan)):
-            vitals["lymphocytes"] = float(row["Lymphocytes"])
-        if not pd.isna(row.get("Monocytes", np.nan)):
-            vitals["monocytes"] = float(row["Monocytes"])
-        
-        # Simulate heart rate and spo2 time series (not in dataset)
-        vitals["heart_rate"] = [75 + np.random.normal(0, 5) for _ in range(10)]
-        vitals["spo2"] = [98 + np.random.normal(0, 1) for _ in range(10)]
-        
-        telemetry_data.append({
-            "patient_id": str(row["Patient ID"])[:10],  # Truncate long IDs
-            "age_quantile": int(row["Patient age quantile"]),
-            "vitals": vitals
-        })
-    
-    # Load clinical notes from CSV
-    notes_df = pd.read_csv("/root/sample-data/mtsamples.csv")
-    clinical_notes = []
-    
-    for i in range(min(size, len(notes_df))):
-        row = notes_df.iloc[i % len(notes_df)]
-        
-        # Extract meaningful note data
-        note_text = str(row["transcription"])[:1000]  # Truncate for efficiency
-        specialty = str(row["medical_specialty"]) if not pd.isna(row["medical_specialty"]) else "General Medicine"
-        
-        clinical_notes.append({
-            "note_id": f"NOTE_{i:04d}",
-            "medical_specialty": specialty,
-            "note": note_text
-        })
-    
-    print(f"Loaded {len(radiology_data)} radiology records, {len(telemetry_data)} telemetry records, {len(clinical_notes)} clinical notes")
-    return radiology_data, telemetry_data, clinical_notes
+    from atlas_pipeline import benchmark, data
 
-
-@app.local_entrypoint()  
-def simulate_clinical_workload_bursts():
-    """
-    Simulate different clinical workload patterns using real medical data to observe elastic scaling:
-    
-    Uses real sample data:
-    - Radiology metadata (100 real imaging studies)
-    - Telemetry data (5,644 COVID-19 patient records)  
-    - Clinical notes (4,999 medical transcription samples)
-    
-    Workload patterns:
-    1. Morning imaging surge (GPU burst)
-    2. Continuous telemetry stream (CPU steady)
-    3. Evening dictation burst (CPU + GPU mixed)
-    
-    Watch the Modal dashboard to see:
-    - GPU nodes spinning up during radiology bursts
-    - CPU containers scaling independently
-    - Automatic teardown during idle periods
-    """
-    print("Atlas Health Clinical Workload Simulation")
-    print("=" * 60)
-    
-    scenarios = [
-        ("morning_imaging_surge", 50, "Morning imaging surge - GPU intensive"),
-        ("telemetry_stream", 30, "Telemetry stream - CPU steady state"),
-        ("evening_mixed_burst", 80, "Evening mixed burst - Multi-modal"),
-        ("weekend_light_load", 15, "Weekend light load - Minimal scaling")
-    ]
-    
-    all_results = []
-    
-    for scenario, size, description in scenarios:
-        print(f"\n{description}")
-        print("-" * 40)
-        
-        # Load real sample workload
-        workload_start = time.time()
-        radiology, telemetry, notes = load_sample_workload.remote(scenario, size)
-        
-        # Process through pipeline
-        scenario_start = time.time()
-        results = multimodal_inference_dag(radiology, telemetry, notes)
-        scenario_time = time.time() - scenario_start
-        
-        print(f"Scenario completed in {scenario_time:.2f}s")
-        print(f"Processed {len(results)} patients")
-        print(f"Score range: {min(r['triage_score'] for r in results):.3f} - {max(r['triage_score'] for r in results):.3f}")
-        
-        # Add scenario metadata
-        for result in results:
-            result['scenario'] = scenario
-            result['scenario_time'] = scenario_time
-            
-        all_results.extend(results)
-        
-        # Brief pause between scenarios to observe teardown
-        if scenario != scenarios[-1][0]:  # Don't pause after last scenario
-            print("Pausing 30s to observe container teardown...")
-            time.sleep(30)
-    
-    print(f"\nAll scenarios completed!")
-    print(f"Total patients processed: {len(all_results)}")
-    
-    # Save comprehensive results
-    with open("serverless_scaling_results.json", "w") as f:
-        json.dump(all_results, f, indent=2)
-    
-    print(f"Results saved to serverless_scaling_results.json")
-    
-    return all_results
-
-
-# =============================================================================
-# MONITORING AND OBSERVABILITY
-# =============================================================================
-
-@app.function(cpu=1, memory=1024, image=cpu_image)
-def analyze_scaling_patterns(results: List[Dict]) -> Dict[str, Any]:
-    """
-    Analyze scaling behavior and cost patterns from inference results.
-    """
-    import pandas as pd
-    
-    df = pd.DataFrame(results)
-    
-    analysis = {
-        "total_patients": len(results),
-        "scenarios": df['scenario'].value_counts().to_dict(),
-        "avg_triage_score": df['triage_score'].mean(),
-        "score_distribution": {
-            "min": df['triage_score'].min(),
-            "max": df['triage_score'].max(),
-            "std": df['triage_score'].std()
-        },
-        "performance_by_scenario": df.groupby('scenario')['scenario_time'].agg(['mean', 'std']).to_dict(),
-        "modality_dimensions": {
-            "radiology": results[0]['modality_dims']['radiology'],
-            "telemetry": results[0]['modality_dims']['telemetry'],
-            "text": results[0]['modality_dims']['text']
-        }
+    batch = data.cases(cases)
+    print(f"Starting multimodal inference DAG for {len(batch)} cases")
+    started = time.time()
+    calls = {
+        "radiology": RadiologyService().score.spawn([c["xray"] for c in batch]),
+        "labs": LabsService().score.spawn([c["labs"] for c in batch]),
+        "notes": NotesService().score.spawn([c["note"] for c in batch]),
     }
-    
-    return analysis
+    scores = {m: call.get() for m, call in calls.items()}
+    for m, out in scores.items():
+        print(f"   {m:9s} {'cold' if out['first_request'] else 'warm'} container {out['worker_id']}, "
+              f"model load {out['load_seconds']:.1f} s, compute {out['compute_seconds']:.2f} s")
+    results = []
+    for i, case in enumerate(batch):
+        probs = {m: scores[m]["probabilities"][i] for m in scores}
+        results.append({"case_id": case["case_id"], **{m: round(p, 3) for m, p in probs.items()},
+                        **benchmark.triage(probs)})
+    print(f"\nDAG completed in {time.time() - started:.2f}s")
+    for r in results:
+        print(f"   {r['case_id']}: radiology {r['radiology']:.3f}, labs {r['labs']:.3f}, notes {r['notes']:.3f} "
+              f"-> triage {r['triage_score']:.3f}{'  URGENT' if r['urgent'] else ''}")
+    return results
 
 
 if __name__ == "__main__":
-    # This file is designed to be run with Modal CLI using real medical data:
-    # modal run serverless_multimodal_pipeline.py::simulate_clinical_workload_bursts
-    print("Use Modal CLI to run the serverless pipeline with real medical data:")
+    print("Run this file with the Modal CLI:")
     print("   modal run serverless_multimodal_pipeline.py::simulate_clinical_workload_bursts")
-    print("   modal run serverless_multimodal_pipeline.py::multimodal_inference_dag --radiology-data=... --telemetry-data=... --clinical-notes=...")
+    print("Or the same pipeline locally: python run_serverless_demo.py")

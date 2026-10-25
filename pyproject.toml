@@ -1,0 +1,41 @@
+[project]
+name = "playbook-09-multimodal-scaling-benchmarks"
+version = "2026.10"
+description = "Elastic scaling for a multimodal medical inference pipeline, on Modal and locally: chest X-rays, lab results and clinical notes, cold starts, autoscaling, pre-warming and cost (Data Engineering for Multimodal AI, Chapter 9)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+dependencies = [
+    "modal>=1.3",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "openpyxl>=3.1",
+    "scikit-learn>=1.4",
+    "joblib>=1.3",
+    "pillow>=10.2",
+    "torch>=2.3",
+    "torchvision>=0.18",
+    "sentence-transformers>=3.0",
+    "transformers>=4.51",
+    "requests>=2.31",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+# On Linux, PyPI's torch is the CUDA build. This playbook runs locally on CPU, so Linux gets the CPU
+# build (the Modal containers install their own, see serverless_multimodal_pipeline.py).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

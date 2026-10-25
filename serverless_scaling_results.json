@@ -1,2102 +1,1692 @@
 [
   {
-    "patient_id": "P000",
-    "triage_score": 0.5865468684851405,
-    "timestamp": 1753997204.4381607,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0000",
+    "radiology": 0.9999,
+    "labs": 0.3546,
+    "notes": 0.1965,
+    "triage_score": 0.6456284737205307,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P001",
-    "triage_score": 0.0158715727968322,
-    "timestamp": 1753997204.438165,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0001",
+    "radiology": 0.9603,
+    "labs": 0.5521,
+    "notes": 0.1018,
+    "triage_score": 0.6661419618838709,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P002",
-    "triage_score": 0.8251482568983438,
-    "timestamp": 1753997204.4381666,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0002",
+    "radiology": 0.0001,
+    "labs": 0.2736,
+    "notes": 0.9597,
+    "triage_score": 0.2740623835783758,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P003",
-    "triage_score": 0.9881558431453417,
-    "timestamp": 1753997204.4381678,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0003",
+    "radiology": 0.0132,
+    "labs": 0.4685,
+    "notes": 0.0786,
+    "triage_score": 0.16285707261980983,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P004",
-    "triage_score": 0.9536908596588191,
-    "timestamp": 1753997204.4381692,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0004",
+    "radiology": 0.4077,
+    "labs": 0.5303,
+    "notes": 0.9324,
+    "triage_score": 0.5494003333304228,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P005",
-    "triage_score": 0.9926394808545554,
-    "timestamp": 1753997204.4381707,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0005",
+    "radiology": 0.9957,
+    "labs": 0.6113,
+    "notes": 0.1241,
+    "triage_score": 0.7060876551208753,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P006",
-    "triage_score": 0.9964825845201752,
-    "timestamp": 1753997204.4381716,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0006",
+    "radiology": 0.3748,
+    "labs": 0.2916,
+    "notes": 0.0856,
+    "triage_score": 0.2919745972944131,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P007",
-    "triage_score": 0.9666708779357381,
-    "timestamp": 1753997204.4381757,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0007",
+    "radiology": 0.7456,
+    "labs": 0.2707,
+    "notes": 0.0201,
+    "triage_score": 0.45803967550994223,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P008",
-    "triage_score": 0.043309691770825845,
-    "timestamp": 1753997204.4381773,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0008",
+    "radiology": 0.9911,
+    "labs": 0.6745,
+    "notes": 0.155,
+    "triage_score": 0.7289166802600747,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P009",
-    "triage_score": 0.983501837738267,
-    "timestamp": 1753997204.4381788,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0009",
+    "radiology": 0.9837,
+    "labs": 0.3064,
+    "notes": 0.1223,
+    "triage_score": 0.60822895264796,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P010",
-    "triage_score": 0.9587451974892581,
-    "timestamp": 1753997204.4381797,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0010",
+    "radiology": 0.9947,
+    "labs": 0.4082,
+    "notes": 0.0303,
+    "triage_score": 0.6258569134473936,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P011",
-    "triage_score": 0.9367809571571044,
-    "timestamp": 1753997204.4381812,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0011",
+    "radiology": 0.2897,
+    "labs": 0.4771,
+    "notes": 0.0564,
+    "triage_score": 0.2992922068115613,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P012",
-    "triage_score": 0.30902530502440656,
-    "timestamp": 1753997204.4381826,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0012",
+    "radiology": 0.0006,
+    "labs": 0.7681,
+    "notes": 0.0315,
+    "triage_score": 0.23702044473228218,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P013",
-    "triage_score": 0.9344080448797616,
-    "timestamp": 1753997204.4381838,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0013",
+    "radiology": 0.0002,
+    "labs": 0.2339,
+    "notes": 0.0197,
+    "triage_score": 0.0742311898813124,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P014",
-    "triage_score": 0.8062508026215257,
-    "timestamp": 1753997204.4381852,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0014",
+    "radiology": 0.9639,
+    "labs": 0.6115,
+    "notes": 0.0316,
+    "triage_score": 0.6716961932141597,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P015",
-    "triage_score": 0.0012092381847996604,
-    "timestamp": 1753997204.4381864,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0015",
+    "radiology": 0.0022,
+    "labs": 0.4424,
+    "notes": 0.0079,
+    "triage_score": 0.13540658945135753,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P016",
-    "triage_score": 0.9233246323118821,
-    "timestamp": 1753997204.4381874,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0016",
+    "radiology": 0.0326,
+    "labs": 0.5834,
+    "notes": 0.0145,
+    "triage_score": 0.19420296535582743,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P017",
-    "triage_score": 0.9730861274146945,
-    "timestamp": 1753997204.4381883,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0017",
+    "radiology": 0.9995,
+    "labs": 0.4787,
+    "notes": 0.042,
+    "triage_score": 0.6517568187629409,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P018",
-    "triage_score": 0.008555303674432673,
-    "timestamp": 1753997204.4381893,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0018",
+    "radiology": 1.0,
+    "labs": 0.1492,
+    "notes": 0.0219,
+    "triage_score": 0.5491384619875621,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P019",
-    "triage_score": 0.990585825565675,
-    "timestamp": 1753997204.438191,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0019",
+    "radiology": 0.9013,
+    "labs": 0.0953,
+    "notes": 0.0723,
+    "triage_score": 0.49369659879503547,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P020",
-    "triage_score": 0.979482102173175,
-    "timestamp": 1753997204.4381917,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0020",
+    "radiology": 0.9197,
+    "labs": 0.1877,
+    "notes": 0.0337,
+    "triage_score": 0.5229193717926024,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P021",
-    "triage_score": 0.9819501768187696,
-    "timestamp": 1753997204.4381926,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0021",
+    "radiology": 0.6663,
+    "labs": 0.6805,
+    "notes": 0.0583,
+    "triage_score": 0.5489874250922989,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P022",
-    "triage_score": 0.045228078339837205,
-    "timestamp": 1753997204.4381933,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0022",
+    "radiology": 0.2313,
+    "labs": 0.553,
+    "notes": 0.0248,
+    "triage_score": 0.28650229019762613,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P023",
-    "triage_score": 0.9664480668789386,
-    "timestamp": 1753997204.438194,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0023",
+    "radiology": 0.9984,
+    "labs": 0.6324,
+    "notes": 0.0707,
+    "triage_score": 0.703086267673129,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P024",
-    "triage_score": 0.993728849703965,
-    "timestamp": 1753997204.4381948,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0024",
+    "radiology": 1.0,
+    "labs": 0.0252,
+    "notes": 0.0343,
+    "triage_score": 0.5144117638229377,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P025",
-    "triage_score": 0.9563856694402454,
-    "timestamp": 1753997204.438196,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0025",
+    "radiology": 0.0001,
+    "labs": 0.7976,
+    "notes": 0.2232,
+    "triage_score": 0.2839675608046631,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P026",
-    "triage_score": 0.9329648997342384,
-    "timestamp": 1753997204.4381967,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0026",
+    "radiology": 1.0,
+    "labs": 0.1135,
+    "notes": 0.0761,
+    "triage_score": 0.5492414630428228,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P027",
-    "triage_score": 0.9601347033267643,
-    "timestamp": 1753997204.4382098,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0027",
+    "radiology": 0.9998,
+    "labs": 0.5627,
+    "notes": 0.0231,
+    "triage_score": 0.6733504896376923,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P028",
-    "triage_score": 0.006367305734852521,
-    "timestamp": 1753997204.4382107,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0028",
+    "radiology": 0.945,
+    "labs": 0.3176,
+    "notes": 0.0249,
+    "triage_score": 0.5727828158464588,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P029",
-    "triage_score": 0.019586570181973413,
-    "timestamp": 1753997204.4382117,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0029",
+    "radiology": 1.0,
+    "labs": 0.2012,
+    "notes": 0.0175,
+    "triage_score": 0.5638567383420315,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P030",
-    "triage_score": 0.002482915013971662,
-    "timestamp": 1753997204.4382124,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0030",
+    "radiology": 0.9982,
+    "labs": 0.3825,
+    "notes": 0.0298,
+    "triage_score": 0.6198069976728198,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P031",
-    "triage_score": 0.9757714499274848,
-    "timestamp": 1753997204.438213,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0031",
+    "radiology": 1.0,
+    "labs": 0.5087,
+    "notes": 0.025,
+    "triage_score": 0.6575979133984093,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P032",
-    "triage_score": 0.0004737274026938374,
-    "timestamp": 1753997204.4382138,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0032",
+    "radiology": 0.0362,
+    "labs": 0.7199,
+    "notes": 0.1979,
+    "triage_score": 0.2736456498714765,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P033",
-    "triage_score": 0.9827580872561924,
-    "timestamp": 1753997204.4382153,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0033",
+    "radiology": 0.9998,
+    "labs": 0.1296,
+    "notes": 0.0833,
+    "triage_score": 0.5554280249053207,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P034",
-    "triage_score": 0.009978755074123038,
-    "timestamp": 1753997204.4382162,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0034",
+    "radiology": 0.9539,
+    "labs": 0.1664,
+    "notes": 0.0847,
+    "triage_score": 0.5437960379645765,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P035",
-    "triage_score": 0.987121582961988,
-    "timestamp": 1753997204.4382172,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0035",
+    "radiology": 0.9493,
+    "labs": 0.0603,
+    "notes": 0.1071,
+    "triage_score": 0.5141711589828737,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P036",
-    "triage_score": 0.0008837789286936062,
-    "timestamp": 1753997204.4382179,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0036",
+    "radiology": 0.9999,
+    "labs": 0.4772,
+    "notes": 0.0057,
+    "triage_score": 0.6442348523077485,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P037",
-    "triage_score": 0.9556832309795509,
-    "timestamp": 1753997204.4382188,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0037",
+    "radiology": 1.0,
+    "labs": 0.7201,
+    "notes": 0.0305,
+    "triage_score": 0.7221304178993169,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P038",
-    "triage_score": 0.08887215223974813,
-    "timestamp": 1753997204.4382195,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0038",
+    "radiology": 0.9996,
+    "labs": 0.1147,
+    "notes": 0.1189,
+    "triage_score": 0.5579723641378342,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P039",
-    "triage_score": 0.9571630357462431,
-    "timestamp": 1753997204.4382203,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0039",
+    "radiology": 1.0,
+    "labs": 0.4558,
+    "notes": 0.0122,
+    "triage_score": 0.6391854894717147,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P040",
-    "triage_score": 0.01576472402102995,
-    "timestamp": 1753997204.438221,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0040",
+    "radiology": 0.9998,
+    "labs": 0.2167,
+    "notes": 0.0747,
+    "triage_score": 0.5798357864642657,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P041",
-    "triage_score": 0.9757164799981322,
-    "timestamp": 1753997204.4382224,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0041",
+    "radiology": 0.0002,
+    "labs": 0.4728,
+    "notes": 0.0658,
+    "triage_score": 0.15508122404459113,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P042",
-    "triage_score": 0.9872901927707289,
-    "timestamp": 1753997204.4382234,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0042",
+    "radiology": 0.0,
+    "labs": 0.3093,
+    "notes": 0.0711,
+    "triage_score": 0.10701026082573717,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P043",
-    "triage_score": 0.978493063884137,
-    "timestamp": 1753997204.4382284,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0043",
+    "radiology": 1.0,
+    "labs": 0.784,
+    "notes": 0.1094,
+    "triage_score": 0.7570891578784691,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P044",
-    "triage_score": 0.9460983375363202,
-    "timestamp": 1753997204.4382293,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0044",
+    "radiology": 0.9775,
+    "labs": 0.4967,
+    "notes": 0.028,
+    "triage_score": 0.6433808584761183,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P045",
-    "triage_score": 0.8330915835012936,
-    "timestamp": 1753997204.43823,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0045",
+    "radiology": 0.0054,
+    "labs": 0.5249,
+    "notes": 0.0934,
+    "triage_score": 0.17883851459204253,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P046",
-    "triage_score": 0.9492298285891764,
-    "timestamp": 1753997204.4382308,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0046",
+    "radiology": 1.0,
+    "labs": 0.603,
+    "notes": 0.0313,
+    "triage_score": 0.6871626846946403,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P047",
-    "triage_score": 0.9252047031544551,
-    "timestamp": 1753997204.4382315,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0047",
+    "radiology": 1.0,
+    "labs": 0.3571,
+    "notes": 0.5803,
+    "triage_score": 0.7231932479005156,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P048",
-    "triage_score": 0.40558746670988977,
-    "timestamp": 1753997204.4382327,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0048",
+    "radiology": 0.0003,
+    "labs": 0.3061,
+    "notes": 0.0616,
+    "triage_score": 0.1042983019639433,
+    "urgent": false,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P049",
-    "triage_score": 0.9856211236881761,
-    "timestamp": 1753997204.4382331,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0049",
+    "radiology": 0.9998,
+    "labs": 0.6307,
+    "notes": 0.0383,
+    "triage_score": 0.6967959693164165,
+    "urgent": true,
     "scenario": "morning_imaging_surge",
-    "scenario_time": 55.5220251083374
+    "scenario_time": 15.608329057693481
   },
   {
-    "patient_id": "P000",
-    "triage_score": 0.8750691454391223,
-    "timestamp": 1753997278.294802,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0050",
+    "labs": 0.5442,
+    "triage_score": 0.5441735419292109,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P001",
-    "triage_score": 0.13068636429210156,
-    "timestamp": 1753997278.2948058,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0051",
+    "labs": 0.4659,
+    "triage_score": 0.46588212380278626,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P002",
-    "triage_score": 0.885678819390168,
-    "timestamp": 1753997278.2948072,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0052",
+    "labs": 0.4817,
+    "triage_score": 0.4816787385604365,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P003",
-    "triage_score": 0.9507095847825715,
-    "timestamp": 1753997278.2948084,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0053",
+    "labs": 0.0346,
+    "triage_score": 0.034580425382872274,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P004",
-    "triage_score": 0.8959050607390083,
-    "timestamp": 1753997278.2948098,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0054",
+    "labs": 0.2075,
+    "triage_score": 0.2074989308072469,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P005",
-    "triage_score": 0.91636635906515,
-    "timestamp": 1753997278.2948115,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0055",
+    "labs": 0.2216,
+    "triage_score": 0.22155240274544422,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P006",
-    "triage_score": 0.9339028040924092,
-    "timestamp": 1753997278.2948124,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0056",
+    "labs": 0.1189,
+    "triage_score": 0.1189323899635418,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P007",
-    "triage_score": 0.9818934608656984,
-    "timestamp": 1753997278.294816,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0057",
+    "labs": 0.1433,
+    "triage_score": 0.14328655153576805,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P008",
-    "triage_score": 0.0011354144663968694,
-    "timestamp": 1753997278.2948172,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0058",
+    "labs": 0.3295,
+    "triage_score": 0.329481707130579,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P009",
-    "triage_score": 0.9868734137000288,
-    "timestamp": 1753997278.2948186,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0059",
+    "labs": 0.0919,
+    "triage_score": 0.09185686939021119,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P010",
-    "triage_score": 0.9609078305431791,
-    "timestamp": 1753997278.29482,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0060",
+    "labs": 0.4073,
+    "triage_score": 0.4073092193129218,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P011",
-    "triage_score": 0.1774071134877499,
-    "timestamp": 1753997278.294821,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0061",
+    "labs": 0.7168,
+    "triage_score": 0.7167588296540168,
+    "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P012",
-    "triage_score": 0.3532272582616558,
-    "timestamp": 1753997278.2948222,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0062",
+    "labs": 0.728,
+    "triage_score": 0.7280333097065151,
+    "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P013",
-    "triage_score": 0.9901000454402514,
-    "timestamp": 1753997278.2948232,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0063",
+    "labs": 0.4893,
+    "triage_score": 0.4892645893599317,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P014",
-    "triage_score": 0.9421361749577379,
-    "timestamp": 1753997278.2948241,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0064",
+    "labs": 0.33,
+    "triage_score": 0.329954604287011,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P015",
-    "triage_score": 0.0023581085102700465,
-    "timestamp": 1753997278.2948253,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0065",
+    "labs": 0.5699,
+    "triage_score": 0.569939097778081,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P016",
-    "triage_score": 0.9495563206480445,
-    "timestamp": 1753997278.2948267,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0066",
+    "labs": 0.3026,
+    "triage_score": 0.3026464964699867,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P017",
-    "triage_score": 0.9826891421010193,
-    "timestamp": 1753997278.2948277,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0067",
+    "labs": 0.1289,
+    "triage_score": 0.12888694984115948,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P018",
-    "triage_score": 0.016492770022643436,
-    "timestamp": 1753997278.2948291,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0068",
+    "labs": 0.2487,
+    "triage_score": 0.24867177460715856,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P019",
-    "triage_score": 0.327867993681714,
-    "timestamp": 1753997278.29483,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0069",
+    "labs": 0.2737,
+    "triage_score": 0.2736801408812471,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P020",
-    "triage_score": 0.8208898447555046,
-    "timestamp": 1753997278.294831,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0070",
+    "labs": 0.9256,
+    "triage_score": 0.9256241715656471,
+    "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P021",
-    "triage_score": 0.979399622637019,
-    "timestamp": 1753997278.2948322,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0071",
+    "labs": 0.6284,
+    "triage_score": 0.6283700416863475,
+    "urgent": true,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P022",
-    "triage_score": 0.019399199952528506,
-    "timestamp": 1753997278.294833,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0072",
+    "labs": 0.285,
+    "triage_score": 0.28499002779581123,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P023",
-    "triage_score": 0.9860264531237415,
-    "timestamp": 1753997278.2948337,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0073",
+    "labs": 0.0569,
+    "triage_score": 0.05693586674541724,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P024",
-    "triage_score": 0.9503965500906335,
-    "timestamp": 1753997278.2948341,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0074",
+    "labs": 0.0422,
+    "triage_score": 0.04220163993411919,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P025",
-    "triage_score": 0.9762174376220247,
-    "timestamp": 1753997278.294835,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0075",
+    "labs": 0.3311,
+    "triage_score": 0.33111742104746433,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P026",
-    "triage_score": 0.9896848554555139,
-    "timestamp": 1753997278.294836,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0076",
+    "labs": 0.3302,
+    "triage_score": 0.33021470295482724,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P027",
-    "triage_score": 0.9899111240675982,
-    "timestamp": 1753997278.2948434,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0077",
+    "labs": 0.3848,
+    "triage_score": 0.3847531396174554,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P028",
-    "triage_score": 0.007456276774559994,
-    "timestamp": 1753997278.2948442,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0078",
+    "labs": 0.1716,
+    "triage_score": 0.17162837157791672,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P029",
-    "triage_score": 0.021415305080359583,
-    "timestamp": 1753997278.2948449,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0079",
+    "labs": 0.5069,
+    "triage_score": 0.5068543076699118,
+    "urgent": false,
     "scenario": "telemetry_stream",
-    "scenario_time": 34.817331075668335
+    "scenario_time": 2.79892897605896
   },
   {
-    "patient_id": "P000",
-    "triage_score": 0.9755663690371091,
-    "timestamp": 1753997317.0659728,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0080",
+    "radiology": 0.9945,
+    "labs": 0.2504,
+    "notes": 0.0378,
+    "triage_score": 0.5799228689822641,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P001",
-    "triage_score": 0.041007263674988116,
-    "timestamp": 1753997317.0659769,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0081",
+    "radiology": 0.0001,
+    "labs": 0.1783,
+    "notes": 0.1791,
+    "triage_score": 0.08934219203903339,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P002",
-    "triage_score": 0.9709987564901554,
-    "timestamp": 1753997317.0659783,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0082",
+    "radiology": 0.9996,
+    "labs": 0.5163,
+    "notes": 0.0848,
+    "triage_score": 0.6716427548896424,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P003",
-    "triage_score": 0.8542950753232119,
-    "timestamp": 1753997317.0659797,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0083",
+    "radiology": 0.9634,
+    "labs": 0.3693,
+    "notes": 0.0784,
+    "triage_score": 0.6081415291647888,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P004",
-    "triage_score": 0.9913171682639721,
-    "timestamp": 1753997317.0659814,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0084",
+    "radiology": 1.0,
+    "labs": 0.6236,
+    "notes": 0.0207,
+    "triage_score": 0.6912025433366465,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P005",
-    "triage_score": 0.9826970072012908,
-    "timestamp": 1753997317.065983,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0085",
+    "radiology": 0.9622,
+    "labs": 0.2645,
+    "notes": 0.0586,
+    "triage_score": 0.5721866634231648,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P006",
-    "triage_score": 0.9747770660286776,
-    "timestamp": 1753997317.0659838,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0086",
+    "radiology": 0.9988,
+    "labs": 0.3978,
+    "notes": 0.0188,
+    "triage_score": 0.6224982366721029,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P007",
-    "triage_score": 0.972067956225721,
-    "timestamp": 1753997317.0659852,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0087",
+    "radiology": 0.9961,
+    "labs": 0.6441,
+    "notes": 0.0124,
+    "triage_score": 0.6937333361217212,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
+    "scenario_time": 1.4706759452819824
   },
   {
-    "patient_id": "P008",
-    "triage_score": 0.0019075679300961982,
-    "timestamp": 1753997317.0659864,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0088",
+    "radiology": 0.6327,
+    "labs": 0.3661,
+    "notes": 0.986,
+    "triage_score": 0.6234071527192583,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P009",
-    "triage_score": 0.9818934936755194,
-    "timestamp": 1753997317.0659876,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0089",
+    "radiology": 0.9942,
+    "labs": 0.5563,
+    "notes": 0.9764,
+    "triage_score": 0.8592607831334832,
+    "urgent": true,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0090",
+    "radiology": 1.0,
+    "labs": 0.1599,
+    "notes": 0.7335,
+    "triage_score": 0.6946646775833674,
+    "urgent": true,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0091",
+    "radiology": 1.0,
+    "labs": 0.1801,
+    "notes": 0.1246,
+    "triage_score": 0.5789556020295259,
+    "urgent": false,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0092",
+    "radiology": 0.0101,
+    "labs": 0.2646,
+    "notes": 0.0133,
+    "triage_score": 0.08710901898401084,
+    "urgent": false,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0093",
+    "radiology": 0.9999,
+    "labs": 0.5665,
+    "notes": 0.0531,
+    "triage_score": 0.6805377573637919,
+    "urgent": true,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0094",
+    "radiology": 0.2269,
+    "labs": 0.3883,
+    "notes": 0.0453,
+    "triage_score": 0.23898305773091552,
+    "urgent": false,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0095",
+    "radiology": 0.9919,
+    "labs": 0.7136,
+    "notes": 0.0046,
+    "triage_score": 0.7109662397229555,
+    "urgent": true,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0096",
+    "radiology": 0.9999,
+    "labs": 0.1477,
+    "notes": 0.0331,
+    "triage_score": 0.5508966118757844,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P010",
-    "triage_score": 0.9683705923966859,
-    "timestamp": 1753997317.0659888,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0097",
+    "radiology": 0.9963,
+    "labs": 0.4158,
+    "notes": 0.0663,
+    "triage_score": 0.6361488747080379,
+    "urgent": true,
+    "scenario": "evening_mixed_burst",
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0098",
+    "radiology": 0.9999,
+    "labs": 0.7558,
+    "notes": 0.0594,
+    "triage_score": 0.7385843016762436,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P011",
-    "triage_score": 0.9450007950495373,
-    "timestamp": 1753997317.0659902,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0099",
+    "radiology": 1.0,
+    "labs": 0.7011,
+    "notes": 0.2094,
+    "triage_score": 0.7522102310342128,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P012",
-    "triage_score": 0.9391820952440837,
-    "timestamp": 1753997317.0659914,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0100",
+    "radiology": 0.0064,
+    "labs": 0.6427,
+    "notes": 0.1203,
+    "triage_score": 0.2200398794514976,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P013",
-    "triage_score": 0.9952868934044867,
-    "timestamp": 1753997317.0659924,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0101",
+    "radiology": 1.0,
+    "labs": 0.8876,
+    "notes": 0.0439,
+    "triage_score": 0.7750641250523308,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P014",
-    "triage_score": 0.9624587782790683,
-    "timestamp": 1753997317.0659938,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0102",
+    "radiology": 0.999,
+    "labs": 0.139,
+    "notes": 0.1608,
+    "triage_score": 0.5733544402884487,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P015",
-    "triage_score": 0.0071249069097084165,
-    "timestamp": 1753997317.0659947,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0103",
+    "radiology": 0.9939,
+    "labs": 0.0992,
+    "notes": 0.1349,
+    "triage_score": 0.5536770458834019,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P016",
-    "triage_score": 0.9828921179559088,
-    "timestamp": 1753997317.0659962,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0104",
+    "radiology": 0.8456,
+    "labs": 0.9815,
+    "notes": 0.2855,
+    "triage_score": 0.7743492365969877,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P017",
-    "triage_score": 0.9941596636684872,
-    "timestamp": 1753997317.0659978,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0105",
+    "radiology": 0.0484,
+    "labs": 0.2078,
+    "notes": 0.3401,
+    "triage_score": 0.15459546884491074,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P018",
-    "triage_score": 0.002827562846551964,
-    "timestamp": 1753997317.065999,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0106",
+    "radiology": 0.9985,
+    "labs": 0.758,
+    "notes": 0.9227,
+    "triage_score": 0.9111670594041518,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P019",
-    "triage_score": 0.9648108119760256,
-    "timestamp": 1753997317.0660007,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0107",
+    "radiology": 0.0205,
+    "labs": 0.2193,
+    "notes": 0.0542,
+    "triage_score": 0.0868872880310707,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P020",
-    "triage_score": 0.9646829313800772,
-    "timestamp": 1753997317.0660017,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0108",
+    "radiology": 0.9999,
+    "labs": 0.4277,
+    "notes": 0.0512,
+    "triage_score": 0.6385163401154219,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P021",
-    "triage_score": 0.9923623934528112,
-    "timestamp": 1753997317.0660028,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0109",
+    "radiology": 0.0888,
+    "labs": 0.7029,
+    "notes": 0.0819,
+    "triage_score": 0.2716039537763216,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P022",
-    "triage_score": 0.010130290008918377,
-    "timestamp": 1753997317.0660038,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0110",
+    "radiology": 0.0023,
+    "labs": 0.1223,
+    "notes": 0.2192,
+    "triage_score": 0.08168052473510168,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P023",
-    "triage_score": 0.95621040805402,
-    "timestamp": 1753997317.0660045,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0111",
+    "radiology": 0.0017,
+    "labs": 0.2193,
+    "notes": 0.8026,
+    "triage_score": 0.22717162569214872,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P024",
-    "triage_score": 0.9810204707753174,
-    "timestamp": 1753997317.0660055,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0112",
+    "radiology": 0.01,
+    "labs": 0.171,
+    "notes": 0.2941,
+    "triage_score": 0.11513585494343329,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P025",
-    "triage_score": 0.7527029712419999,
-    "timestamp": 1753997317.0660074,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0113",
+    "radiology": 1.0,
+    "labs": 0.2264,
+    "notes": 0.0286,
+    "triage_score": 0.5735948239365567,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P026",
-    "triage_score": 0.9488220944924995,
-    "timestamp": 1753997317.0660088,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0114",
+    "radiology": 0.9477,
+    "labs": 0.3296,
+    "notes": 0.3931,
+    "triage_score": 0.6513660166004891,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P027",
-    "triage_score": 0.9683034194066094,
-    "timestamp": 1753997317.0660093,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0115",
+    "radiology": 0.7155,
+    "labs": 0.701,
+    "notes": 0.0292,
+    "triage_score": 0.5738780874288064,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P028",
-    "triage_score": 0.0020532369114348793,
-    "timestamp": 1753997317.0660105,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0116",
+    "radiology": 0.9995,
+    "labs": 0.2664,
+    "notes": 0.0817,
+    "triage_score": 0.5959883651840807,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P029",
-    "triage_score": 0.0031201905188492705,
-    "timestamp": 1753997317.0660114,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0117",
+    "radiology": 0.9307,
+    "labs": 0.1938,
+    "notes": 0.0105,
+    "triage_score": 0.5255643618289982,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P030",
-    "triage_score": 0.004997258522507164,
-    "timestamp": 1753997317.0660126,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0118",
+    "radiology": 1.0,
+    "labs": 0.4974,
+    "notes": 0.01,
+    "triage_score": 0.6511998827766964,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P031",
-    "triage_score": 0.9482478412400749,
-    "timestamp": 1753997317.0660133,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0119",
+    "radiology": 0.0525,
+    "labs": 0.1503,
+    "notes": 0.0927,
+    "triage_score": 0.08990127786664845,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P032",
-    "triage_score": 0.010924693509358437,
-    "timestamp": 1753997317.0660143,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0120",
+    "radiology": 0.9998,
+    "labs": 0.214,
+    "notes": 0.7701,
+    "triage_score": 0.7181219672988178,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P033",
-    "triage_score": 0.9948780927671224,
-    "timestamp": 1753997317.0660157,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0121",
+    "radiology": 1.0,
+    "labs": 0.3275,
+    "notes": 0.0275,
+    "triage_score": 0.6037401936382236,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P034",
-    "triage_score": 0.018181003558998318,
-    "timestamp": 1753997317.0660164,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0122",
+    "radiology": 0.9981,
+    "labs": 0.7387,
+    "notes": 0.0202,
+    "triage_score": 0.7246884126893159,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P035",
-    "triage_score": 0.9761045925745898,
-    "timestamp": 1753997317.066018,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0123",
+    "radiology": 0.9987,
+    "labs": 0.1319,
+    "notes": 0.0586,
+    "triage_score": 0.550626717180673,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P036",
-    "triage_score": 0.0031481507503777137,
-    "timestamp": 1753997317.066019,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0124",
+    "radiology": 0.1283,
+    "labs": 0.267,
+    "notes": 0.2677,
+    "triage_score": 0.1978080040879865,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P037",
-    "triage_score": 0.9752089583473519,
-    "timestamp": 1753997317.0660203,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0125",
+    "radiology": 1.0,
+    "labs": 0.5731,
+    "notes": 0.0241,
+    "triage_score": 0.6767604208922785,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P038",
-    "triage_score": 0.023681384769873304,
-    "timestamp": 1753997317.0660212,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0126",
+    "radiology": 0.9999,
+    "labs": 0.5345,
+    "notes": 0.0486,
+    "triage_score": 0.6700357719525863,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P039",
-    "triage_score": 0.9563342720702186,
-    "timestamp": 1753997317.0660222,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0127",
+    "radiology": 0.0254,
+    "labs": 0.5965,
+    "notes": 0.093,
+    "triage_score": 0.2102677528408091,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P040",
-    "triage_score": 0.003967036788593331,
-    "timestamp": 1753997317.066023,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0128",
+    "radiology": 0.9592,
+    "labs": 0.481,
+    "notes": 0.069,
+    "triage_score": 0.6376919298767058,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P041",
-    "triage_score": 0.9810869297001236,
-    "timestamp": 1753997317.0660245,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0129",
+    "radiology": 0.003,
+    "labs": 0.525,
+    "notes": 0.0203,
+    "triage_score": 0.1630396703261263,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P042",
-    "triage_score": 0.9408009110039567,
-    "timestamp": 1753997317.0660253,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0130",
+    "radiology": 1.0,
+    "labs": 0.9061,
+    "notes": 0.0533,
+    "triage_score": 0.7824527057320508,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P043",
-    "triage_score": 0.669589483726838,
-    "timestamp": 1753997317.066026,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0131",
+    "radiology": 0.9606,
+    "labs": 0.8357,
+    "notes": 0.5679,
+    "triage_score": 0.8445569309761002,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P044",
-    "triage_score": 0.9399446442342931,
-    "timestamp": 1753997317.0660264,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0132",
+    "radiology": 1.0,
+    "labs": 0.4001,
+    "notes": 0.2271,
+    "triage_score": 0.6654593136414892,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P045",
-    "triage_score": 0.976455121328493,
-    "timestamp": 1753997317.0660272,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0133",
+    "radiology": 0.9809,
+    "labs": 0.1157,
+    "notes": 0.0124,
+    "triage_score": 0.527635888239803,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P046",
-    "triage_score": 0.9930569145635498,
-    "timestamp": 1753997317.066028,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0134",
+    "radiology": 1.0,
+    "labs": 0.2451,
+    "notes": 0.03,
+    "triage_score": 0.5795245188624635,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P047",
-    "triage_score": 0.9978789821279608,
-    "timestamp": 1753997317.0660288,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0135",
+    "radiology": 0.9997,
+    "labs": 0.4564,
+    "notes": 0.03,
+    "triage_score": 0.6427865759532014,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P048",
-    "triage_score": 0.9705858315123694,
-    "timestamp": 1753997317.0660293,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0136",
+    "radiology": 0.9999,
+    "labs": 0.6336,
+    "notes": 0.0749,
+    "triage_score": 0.7050036500474307,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P049",
-    "triage_score": 0.9772649083555239,
-    "timestamp": 1753997317.06603,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0137",
+    "radiology": 1.0,
+    "labs": 0.5647,
+    "notes": 0.0122,
+    "triage_score": 0.6718597384482904,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P050",
-    "triage_score": 0.013799297852242166,
-    "timestamp": 1753997317.0660307,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0138",
+    "radiology": 0.9998,
+    "labs": 0.3059,
+    "notes": 0.6241,
+    "triage_score": 0.7164492347979794,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P051",
-    "triage_score": 0.0029401293196452756,
-    "timestamp": 1753997317.0660317,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0139",
+    "radiology": 1.0,
+    "labs": 0.1665,
+    "notes": 0.0803,
+    "triage_score": 0.5659902347809398,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P052",
-    "triage_score": 0.9739740776555592,
-    "timestamp": 1753997317.0660322,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0140",
+    "radiology": 0.0079,
+    "labs": 0.2259,
+    "notes": 0.0578,
+    "triage_score": 0.08327355486569446,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P053",
-    "triage_score": 0.9949069809390249,
-    "timestamp": 1753997317.066033,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0141",
+    "radiology": 0.9974,
+    "labs": 0.625,
+    "notes": 0.009,
+    "triage_score": 0.6880138590266756,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P054",
-    "triage_score": 0.969934969104315,
-    "timestamp": 1753997317.0660336,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0142",
+    "radiology": 0.2642,
+    "labs": 0.8732,
+    "notes": 0.027,
+    "triage_score": 0.3994702407923901,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P055",
-    "triage_score": 0.109979166335805,
-    "timestamp": 1753997317.066034,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0143",
+    "radiology": 0.1798,
+    "labs": 0.1834,
+    "notes": 0.0424,
+    "triage_score": 0.153378319406402,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P056",
-    "triage_score": 0.0007537447277504645,
-    "timestamp": 1753997317.066035,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0144",
+    "radiology": 0.9996,
+    "labs": 0.3727,
+    "notes": 0.1344,
+    "triage_score": 0.6384749291627785,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P057",
-    "triage_score": 0.9960776468264722,
-    "timestamp": 1753997317.0660489,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0145",
+    "radiology": 0.2025,
+    "labs": 0.2915,
+    "notes": 0.0664,
+    "triage_score": 0.20199848665091144,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P058",
-    "triage_score": 0.9648982941370511,
-    "timestamp": 1753997317.0660532,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0146",
+    "radiology": 0.974,
+    "labs": 0.1642,
+    "notes": 0.0395,
+    "triage_score": 0.5441651665601328,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P059",
-    "triage_score": 0.010088393452057844,
-    "timestamp": 1753997317.0660536,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0147",
+    "radiology": 1.0,
+    "labs": 0.5025,
+    "notes": 0.0137,
+    "triage_score": 0.6534707763776757,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P060",
-    "triage_score": 0.9864450071436539,
-    "timestamp": 1753997317.066054,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0148",
+    "radiology": 1.0,
+    "labs": 0.5655,
+    "notes": 0.0908,
+    "triage_score": 0.6878089331925296,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P061",
-    "triage_score": 0.003374379648794043,
-    "timestamp": 1753997317.0660548,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0149",
+    "radiology": 0.9994,
+    "labs": 0.4024,
+    "notes": 0.0292,
+    "triage_score": 0.6262408878135297,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P062",
-    "triage_score": 0.0013660474072852145,
-    "timestamp": 1753997317.0660555,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0150",
+    "radiology": 0.0036,
+    "labs": 0.4828,
+    "notes": 0.6749,
+    "triage_score": 0.2816256869305822,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P063",
-    "triage_score": 0.7742944359709893,
-    "timestamp": 1753997317.0660563,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0151",
+    "radiology": 0.345,
+    "labs": 0.7719,
+    "notes": 0.9528,
+    "triage_score": 0.5946298895934617,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P064",
-    "triage_score": 0.9936330101974217,
-    "timestamp": 1753997317.0660567,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0152",
+    "radiology": 0.9927,
+    "labs": 0.5567,
+    "notes": 0.0519,
+    "triage_score": 0.6737444501813634,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P065",
-    "triage_score": 0.4819513240883904,
-    "timestamp": 1753997317.0660577,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0153",
+    "radiology": 1.0,
+    "labs": 0.4242,
+    "notes": 0.9366,
+    "triage_score": 0.8145758357965173,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P066",
-    "triage_score": 0.9804064826875702,
-    "timestamp": 1753997317.0660584,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0154",
+    "radiology": 0.0005,
+    "labs": 0.7066,
+    "notes": 0.9487,
+    "triage_score": 0.4019907506993823,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P067",
-    "triage_score": 0.872213981991839,
-    "timestamp": 1753997317.066059,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0155",
+    "radiology": 0.0574,
+    "labs": 0.9608,
+    "notes": 0.9491,
+    "triage_score": 0.5067698634434055,
+    "urgent": false,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P068",
-    "triage_score": 0.9136663389956233,
-    "timestamp": 1753997317.0660596,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0156",
+    "radiology": 1.0,
+    "labs": 0.38,
+    "notes": 0.9553,
+    "triage_score": 0.805038901961618,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P069",
-    "triage_score": 0.9826927340686247,
-    "timestamp": 1753997317.0660603,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0157",
+    "radiology": 1.0,
+    "labs": 0.611,
+    "notes": 0.0256,
+    "triage_score": 0.6884281392774196,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P070",
-    "triage_score": 0.9109682561885087,
-    "timestamp": 1753997317.0660608,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0158",
+    "radiology": 0.9158,
+    "labs": 0.8996,
+    "notes": 0.0745,
+    "triage_score": 0.7426915639558695,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P071",
-    "triage_score": 0.006014829891604126,
-    "timestamp": 1753997317.0660613,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0159",
+    "radiology": 0.9985,
+    "labs": 0.5137,
+    "notes": 0.1015,
+    "triage_score": 0.6736680050268044,
+    "urgent": true,
     "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P072",
-    "triage_score": 0.8249092523680619,
-    "timestamp": 1753997317.0660617,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P073",
-    "triage_score": 0.008673406782875403,
-    "timestamp": 1753997317.066066,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P074",
-    "triage_score": 0.9832820074474544,
-    "timestamp": 1753997317.0660667,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P075",
-    "triage_score": 0.9467114875127712,
-    "timestamp": 1753997317.0660675,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P076",
-    "triage_score": 0.90217497450663,
-    "timestamp": 1753997317.066068,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P077",
-    "triage_score": 0.9896039006173752,
-    "timestamp": 1753997317.0660686,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P078",
-    "triage_score": 0.0008383255169664321,
-    "timestamp": 1753997317.0660694,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P079",
-    "triage_score": 0.9488386491878974,
-    "timestamp": 1753997317.0660698,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
-    "scenario": "evening_mixed_burst",
-    "scenario_time": 7.580948114395142
-  },
-  {
-    "patient_id": "P000",
-    "triage_score": 0.351448581923993,
-    "timestamp": 1753997349.6251853,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "scenario_time": 1.4706759452819824
+  },
+  {
+    "case_id": "C0160",
+    "radiology": 0.9993,
+    "labs": 0.2841,
+    "notes": 0.1818,
+    "triage_score": 0.6212160936067413,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P001",
-    "triage_score": 0.08815074764773513,
-    "timestamp": 1753997349.625188,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0161",
+    "radiology": 0.0495,
+    "labs": 0.5902,
+    "notes": 0.0246,
+    "triage_score": 0.20676334399583937,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P002",
-    "triage_score": 0.750819276928588,
-    "timestamp": 1753997349.6251888,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0162",
+    "radiology": 0.7167,
+    "labs": 0.4659,
+    "notes": 0.0175,
+    "triage_score": 0.5015971366644613,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P003",
-    "triage_score": 0.8748154644790175,
-    "timestamp": 1753997349.6251898,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0163",
+    "radiology": 1.0,
+    "labs": 0.3672,
+    "notes": 0.0299,
+    "triage_score": 0.6161076143237239,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P004",
-    "triage_score": 0.7000937245043476,
-    "timestamp": 1753997349.625191,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0164",
+    "radiology": 0.9287,
+    "labs": 0.1042,
+    "notes": 0.0775,
+    "triage_score": 0.5111020655262511,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P005",
-    "triage_score": 0.7755120101079683,
-    "timestamp": 1753997349.6251917,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0165",
+    "radiology": 0.0,
+    "labs": 0.5751,
+    "notes": 0.0745,
+    "triage_score": 0.18742771785378617,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P006",
-    "triage_score": 0.25515368469946825,
-    "timestamp": 1753997349.6251926,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0166",
+    "radiology": 0.007,
+    "labs": 0.46,
+    "notes": 0.7967,
+    "triage_score": 0.3008457783375744,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P007",
-    "triage_score": 0.8291497300328521,
-    "timestamp": 1753997349.6251934,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0167",
+    "radiology": 0.9985,
+    "labs": 0.3509,
+    "notes": 0.0068,
+    "triage_score": 0.6058582035771362,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P008",
-    "triage_score": 0.008155293697456566,
-    "timestamp": 1753997349.6251945,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0168",
+    "radiology": 1.0,
+    "labs": 0.6677,
+    "notes": 0.0864,
+    "triage_score": 0.7175592846090665,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P009",
-    "triage_score": 0.9735745129091088,
-    "timestamp": 1753997349.6251953,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0169",
+    "radiology": 0.979,
+    "labs": 0.8526,
+    "notes": 0.0744,
+    "triage_score": 0.7601502947542105,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P010",
-    "triage_score": 0.7795345129890111,
-    "timestamp": 1753997349.6251957,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0170",
+    "radiology": 1.0,
+    "labs": 0.7345,
+    "notes": 0.0505,
+    "triage_score": 0.7304442876231916,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P011",
-    "triage_score": 0.24940651656707533,
-    "timestamp": 1753997349.6251965,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0171",
+    "radiology": 1.0,
+    "labs": 0.4705,
+    "notes": 0.0585,
+    "triage_score": 0.6528436025801531,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P012",
-    "triage_score": 0.3036438463302061,
-    "timestamp": 1753997349.6251974,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0172",
+    "radiology": 0.0,
+    "labs": 0.7081,
+    "notes": 0.0657,
+    "triage_score": 0.22559860768254067,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P013",
-    "triage_score": 0.9808354952961414,
-    "timestamp": 1753997349.625198,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0173",
+    "radiology": 0.9994,
+    "labs": 0.784,
+    "notes": 0.0405,
+    "triage_score": 0.7430026017555692,
+    "urgent": true,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   },
   {
-    "patient_id": "P014",
-    "triage_score": 0.07983593686810779,
-    "timestamp": 1753997349.6251984,
-    "modality_dims": {
-      "radiology": 64,
-      "telemetry": 11,
-      "text": 384
-    },
+    "case_id": "C0174",
+    "radiology": 0.9999,
+    "labs": 0.22,
+    "notes": 0.0153,
+    "triage_score": 0.5689827455021885,
+    "urgent": false,
     "scenario": "weekend_light_load",
-    "scenario_time": 1.4540879726409912
+    "scenario_time": 2.298203945159912
   }
 ]

@@ -1,288 +1,125 @@
-# Sample Output: What Users See When Running the Predictive Autoscaler
+# Sample output: predictive autoscaling and the LLM advisor on Modal
 
-## Command Run by User
+Recorded on 2026-10-24 with Modal 1.6.2 (Python 3.12.15 on macOS 26.5.1). The Modal account used had
+no payment method, so GPUs were unavailable: the radiology service ran on 4 CPU cores
+(`ATLAS_GPU=none modal deploy serverless_multimodal_pipeline.py`) and the advisor on 8 CPU cores
+(`ATLAS_ADVISOR_GPU=none`). Run URLs are left out.
+
+## Predictive autoscaling
+
 ```bash
 modal run predictive_autoscaler.py::demo_predictive_autoscaling
 ```
 
-## Expected Output
-
 ```
-- Initialized. View run at https://modal.com/apps/emailvasundra/main/ap-xNmYrkJeYYBMifqdkb0C1x
-Creating objects...
-- Created function predictive_autoscaler_agent.
-- Created function collect_current_metrics.
-- Created function analyze_historical_patterns.
-- Created function check_scheduled_events.
-- Created function generate_llm_scaling_recommendations.
-- Created function execute_prewarming.
-- Created objects.
+Atlas Health Predictive Autoscaling Demo (Modal)
+============================================================
+Making sure the services have scaled to zero (75 s)...
 
-Atlas Health Predictive Autoscaling Demo
-==================================================
+1. Reactive: the surge arrives at scaled-to-zero services
+  50 cases in 18.5 s; urgent: 20; mean triage score 0.492
+  modality   requests workers  cold   p50 s   p95 s   max s accuracy
+  radiology        10       4    10   14.48   14.74   14.78    0.860
+  labs             10       1    10    5.39    5.41    5.41    0.580
+  notes            10       1    10   17.39   18.33   18.48    0.980
+Scaling back to zero before the predictive run (75 s)...
 
-Scenario: morning_preparation
-------------------------------
-Predictive Autoscaler Running at 2025-07-31 08:05:23
+2. Predictive: at Tue 08:50 the schedule predicts:
+   scheduled_procedures: 75 cases at 09:00 (confidence 0.90) -> pre-warm: True
+   min_containers {'radiology': 2, 'labs': 1, 'notes': 2}; waiting until the containers have loaded...
+   warm after 19 s
 
-STEP 1: Collecting Current Signals
------------------------------------
-Current Metrics: Queue depths: {'radiology': 18, 'telemetry': 32, 'text': 6}
-Upstream Signals Detected:
-  - PACS scheduled upload at 08:00 (confidence: 95%)
-  - Day shift change at 06:00 completed
-  • ED census: 22 patients (normal)
-  • ICU census: 24 beds occupied
+   The surge arrives at pre-warmed services
+  50 cases in 2.5 s; urgent: 28; mean triage score 0.553
+  modality   requests workers  cold   p50 s   p95 s   max s accuracy
+  radiology        10       2     0    1.43    1.97    2.02    0.860
+  labs             10       1     0    0.95    0.96    0.96    0.740
+  notes            10       2     1    1.78    2.51    2.51    0.820
+   min_containers back to 0
 
-STEP 2: Historical Pattern Analysis
------------------------------------
-Detected Patterns:
-  • Morning imaging surge: 8AM-9:30AM, avg 150 patients (radiology-heavy)
-  • Current time matches historical surge pattern
-  • Seasonal factor: Normal operations (not flu season)
-
-STEP 3: Scheduled Events Check
-------------------------------
-Scheduled Events: Found 1 upcoming events
-  1. PACS Upload - Expected: 08:00, Volume: 200 studies, Type: radiology
-
-STEP 4: Traditional Rule-Based Predictions
-------------------------------------------
-Generated 2 scaling predictions
-  1. pacs_radiology_surge
-     Start: 08:05, Duration: 30min, Volume: 200 patients
-     Confidence: 0.90, Action: Pre-warm GPU
-
-  2. morning_imaging_surge  
-     Start: 08:20, Duration: 60min, Volume: 150 patients
-     Confidence: 0.75, Action: Pre-warm 2 A100 GPUs
-
-STEP 5: LLM-Enhanced Analysis
------------------------------
-Running LLM-based scaling analysis...
-LLM Context Analysis:
-  • Cross-correlating PACS schedule with queue depth (18 patients)
-  • Historical pattern alignment: 88% match with typical morning surge
-  • Multi-signal confidence boost from scheduled + queue + time factors
-
-LLM generated 1 additional predictions
-  3. llm_intelligent_surge_prediction
-     Start: 08:07, Duration: 45min, Volume: 180 patients  
-     Confidence: 0.88, Action: Pre-warm 2 A100 GPUs
-
-STEP 6: Prediction Prioritization
----------------------------------
-Prioritized 2 predictions from 3 candidates
-Final Recommendations:
-  1. PACS Upload Surge (Confidence: 0.90)
-     > Radiology surge in 2 minutes
-     > Action: Pre-warm 2 A100 GPUs
-     > Resources: {gpu: 2, cpu: 4, memory: 16GB}
-
-  2. LLM Enhanced Prediction (Confidence: 0.88) 
-     > Intelligent surge prediction in 4 minutes
-     > Action: Pre-warm 2 A100 GPUs
-     > Resources: {gpu: 2, cpu: 4, memory: 16GB}
-
-STEP 7: Pre-warming Decision
----------------------------
-Evaluating pre-warming criteria:
-  - High confidence (0.90 > 0.6 threshold)
-  - Optimal timing (2 minutes within 2-15 minute window)
-  - GPU workload (high cold-start cost)
-  
-EXECUTING PRE-WARMING
-
-Pre-warming resources for pacs_radiology_surge
-   Expected start: 2025-07-31 08:07:23
-   Expected volume: 200 patients
-   Confidence: 0.90
-
-GPU Pre-warming Status:
-  > Allocating A100 GPU resources...
-  > Loading PyTorch and CUDA drivers...
-  > Initializing neural network models...
-  > Running dummy forward pass to warm CUDA...
-  - GPU pre-warmed on cuda:0
-  > Keeping container warm for 120s until workload arrives
-
-STEP 8: Monitoring and Logging
-------------------------------
-Logged 2 predictions for monitoring
-Prediction Log Entry:
-{
-  "timestamp": "2025-07-31T08:05:23.123456",
-  "predictions_count": 2,
-  "actions_taken": 1,
-  "resources_prewarmed": {
-    "gpu_instances": 1,
-    "cpu_cores": 4, 
-    "estimated_cost": "$0.12/hour"
-  },
-  "confidence_scores": [0.90, 0.88],
-  "expected_performance_gain": "8-12 seconds faster processing"
-}
-
-Scenario completed in 2.45s
-Generated 2 predictions
-Pre-warmed 1 GPU instance
-Ready for incoming workload surge!
-
-Pausing 30s to observe resource allocation...
-
-scenario: shift_change_anticipation  
-------------------------------
-Predictive Autoscaler Running at 2025-07-31 14:02:15
-
-STEP 1: Collecting Current Signals
------------------------------------
-Current Metrics: Queue depths: {'radiology': 8, 'telemetry': 45, 'text': 22}
-Upstream Signals Detected:
-  • PACS scheduled upload: None
-  - Evening shift change at 14:00 (confidence: 85%)
-  • ED census: 28 patients (normal)
-  • ICU census: 31 beds occupied (high)
-
-STEP 2: Historical Pattern Analysis  
------------------------------------
-Detected Patterns:
-  • Evening dictation surge: 5PM-7PM, avg 80 patients (text-heavy)
-  • Shift change correlation: 75% probability of text processing spike
-  • Current text queue (22) above normal baseline (5-10)
-
-STEP 3: LLM-Enhanced Analysis
------------------------------
-Running LLM-based scaling analysis...
-LLM Output: {"prediction": "Text processing surge in 15 minutes", "action": "Scale CPU text processors to 6 cores"}
-LLM Reasoning: Nursing documentation patterns show 75% correlation between shift changes and text processing spikes
-
-STEP 4: Decision Making
------------------------
-Shift Change Text Surge (Confidence: 0.75)
-  > Text processing surge in 15 minutes
-  > Action: Scale CPU text processors to 6 cores
-  > Resources: {gpu: 0, cpu: 6, memory: 24GB}
-
-Pre-warming Decision: - APPROVED
-  - Confidence above threshold (0.75 > 0.6)
-  - Large volume workload (80 patients > 50 threshold)
-  - Optimal timing window
-
-EXECUTING CPU SCALING
-
-Pre-warming CPU resources for text processing...
-  > Scaling CPU containers to 6 cores...
-  > Loading sentence transformer models...
-  > Initializing text processing pipeline...
-  - CPU resources scaled and ready
-
-Expected Impact:
-  • Text processing capacity: 80 notes/minute > 160 notes/minute
-  • Queue clearance time: 15 minutes > 8 minutes
-  • Staff waiting time reduction: 50%
-
-scenario: weekend_light_load
-------------------------------
-Predictive Autoscaler Running at 2025-08-02 14:30:45
-
-STEP 1: Collecting Current Signals
------------------------------------
-Current Metrics: Queue depths: {'radiology': 3, 'telemetry': 12, 'text': 1}
-Upstream Signals Detected:
-  • PACS scheduled upload: None (weekend)
-  • Shift change: None
-  • ED census: 15 patients (low)
-  • ICU census: 18 beds occupied (normal weekend)
-
-STEP 2: Weekend Pattern Analysis
---------------------------------
-Detected Patterns:
-  • Weekend operational pattern: 85% reduction in elective procedures
-  • Emergency-only workload expected
-  • Historical weekend average: 10-15 patients/hour total
-
-STEP 3: LLM Analysis
--------------------
-LLM Output: {"prediction": "Minimal scaling needed", "action": "Maintain baseline CPU only"}
-LLM Reasoning: Weekend operational patterns consistently show 85% reduction in elective imaging volume
-
-STEP 4: Resource Optimization
------------------------------
-Weekend Scale-Down Decision:
-  > Maintaining minimal baseline resources only
-  > No pre-warming needed
-  > Cost optimization: Reducing idle resource allocation
-
-Resource Status:
-  • GPU instances: 0 (cost savings: $15/hour)
-  • CPU cores: 2 baseline (minimal cost: $2/hour)  
-  • Memory: 4GB baseline
-  • Total weekend savings: 80% vs weekday costs
-
-All scenarios completed!
-========================================
-
-SUMMARY STATISTICS
-==================
-Total scenarios processed: 3
-Total predictions generated: 4
-Actions taken: 2 pre-warming operations
-Resources optimized: 1 GPU + 6 CPU cores
-Estimated performance improvement: 8-12 seconds faster processing
-Cost efficiency: 80% weekend savings, optimal weekday scaling
-
-Key Benefits Demonstrated:
-- Anticipates surges before they happen (5-15 minute advance warning)
-- Reduces cold start delays from 10+ seconds to <1 second  
-- Optimizes resource utilization based on clinical patterns
-- Integrates multiple signal sources for accuracy (PACS, EHR, ED, ICU)
-- Provides intelligent cost optimization (weekend scale-down)
-- Delivers LLM-enhanced predictions with natural language reasoning
-
-Atlas Health Predictive Autoscaling System Ready!
-Monitor dashboard: https://modal.com/apps/emailvasundra/main/atlas-health-predictive-autoscaler
+            reactive p95 s  pre-warmed p95 s  cold starts
+radiology            14.74              1.97    10 -> 0   
+labs                  5.41              0.96    10 -> 0   
+notes                18.33              2.51    10 -> 1   
+Surge wall time: 18.5 s reactive, 2.5 s pre-warmed
 ```
 
-## Key Elements Users Will See
+The same kind of surge, 50 cases: arriving at scaled-to-zero services every request waits for a
+container to start and load its model (p95 13-18 s); after the 08:50 forecast pre-warmed the services
+(radiology 2, labs 1, notes 2 containers, ready 19 s later), p95 is 1-2.5 s.
 
-### **1. Initialization Phase**
-- Modal deployment status
-- Function creation confirmation  
-- Resource allocation messages
+## LLM scaling advisor
 
-### **2. Signal Collection Phase**
-- Current queue depths and metrics
-- Upstream system status (PACS, EHR, ED, ICU)
-- Real-time hospital operational data
+```bash
+ATLAS_ADVISOR_GPU=none modal run predictive_autoscaler.py::demo_llm_scaling_advisor
+```
 
-### **3. Analysis Phase**  
-- Traditional rule-based predictions
-- LLM-enhanced intelligent analysis
-- Cross-signal correlation detection
-- Confidence scoring for each prediction
+Qwen3-4B on 8 CPU cores (bfloat16, about 70 s per answer):
 
-### **4. Decision Making Phase**
-- Pre-warming criteria evaluation
-- Resource requirement calculations
-- Cost-benefit analysis
-- Action approval/rejection
+```
+Atlas Health LLM-Based Scaling Advisor Demo (Modal)
+============================================================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1ALoading weights:   0%|          | 0/398 [00:00<?, ?it/s]
+[1ALoading weights:   5%|▍         | 19/398 [00:00<00:02, 159.60it/s]
+[1ALoading weights:  11%|█         | 42/398 [00:00<00:01, 190.25it/s]
+[1ALoading weights:  17%|█▋        | 67/398 [00:00<00:01, 209.75it/s]
+[1ALoading weights:  26%|██▌       | 104/398 [00:00<00:01, 234.21it/s]
+[1ALoading weights:  32%|███▏      | 128/398 [00:00<00:01, 213.97it/s]
+[1ALoading weights:  38%|███▊      | 150/398 [00:00<00:01, 178.73it/s]
+[1ALoading weights:  44%|████▍     | 176/398 [00:00<00:01, 197.89it/s]
+[1ALoading weights:  49%|████▉     | 197/398 [00:01<00:01, 189.87it/s]
+[1ALoading weights:  56%|█████▌    | 222/398 [00:01<00:00, 196.60it/s]
+[1ALoading weights:  62%|██████▏   | 245/398 [00:01<00:00, 175.32it/s]
+[1ALoading weights:  67%|██████▋   | 268/398 [00:01<00:00, 177.39it/s]
+[1ALoading weights:  74%|███████▍  | 295/398 [00:01<00:00, 197.35it/s]
+[1ALoading weights:  79%|███████▉  | 316/398 [00:01<00:00, 160.25it/s]
+[1ALoading weights:  89%|████████▉ | 356/398 [00:01<00:00, 211.65it/s]
+[1ALoading weights:  95%|█████████▌| 380/398 [00:01<00:00, 205.34it/s]
+[1ALoading weights: 100%|██████████| 398/398 [00:01<00:00, 202.35it/s]
+LLM advisor: Qwen/Qwen3-4B on cpu (loaded in 4.1 s)
+Scenario: morning_pacs_surge
+  Rules:
+    {"prediction": "Radiology surge in 5 minutes", "action": "Pre-warm 2 A100 GPUs"}
+    {"prediction": "Immediate radiology processing needed", "action": "Pre-warm 1 A100 GPU"}
+  LLM (75.6 s):
+    {"prediction": "In the next 15 minutes, there will be a burst of X-rays due to scheduled PACS uploads", "action": "Pre-warm 1 A100 GPU"}
+    {"prediction": "There will be a hospital-wide surge due to multiple queues", "action": "Emergency scale: 3 A100 GPUs + 12 CPU cores"}
+  Agreement with the rules: 1 of the LLM's 2 actions (precision 0.50), 1 of the rules' 2 (recall 0.50)
+Scenario: shift_change_dictation
+  Rules:
+    {"prediction": "Text processing surge in 15 minutes", "action": "Scale CPU text processors to 6 cores"}
+  LLM (68.5 s):
+    {"prediction": "Next 15 minutes", "action": "Pre-warm 1 A100 GPU"}
+    {"prediction": "Next 15 minutes", "action": "Scale CPU text processors to 6 cores"}
+  Agreement with the rules: 1 of the LLM's 2 actions (precision 0.50), 1 of the rules' 1 (recall 1.00)
+Scenario: night_emergency_surge
+  Rules:
+    {"prediction": "Emergency imaging spike in 10 minutes", "action": "Pre-warm 1 A100 GPU"}
+  LLM (71.0 s):
+    {"prediction": "In the next 15 minutes, radiology queue depth is high and emergency department census is elevated.", "action": "Emergency scale: 3 A100 GPUs + 12 CPU cores"}
+    {"prediction": "Telemetry queue depth is high and CPU resources may need to be scaled up.", "action": "Scale CPU telemetry workers to 4 workers"}
+  Agreement with the rules: 0 of the LLM's 2 actions (precision 0.00), 0 of the rules' 1 (recall 0.00)
+Scenario: weekend_minimal
+  Rules:
+    {"prediction": "Minimal scaling needed", "action": "Maintain baseline CPU only"}
+  LLM (67.6 s):
+    {"prediction": "Next 15 minutes", "action": "Emergency scale: 3 A100 GPUs + 12 CPU cores"}
+    {"prediction": "Next 15 minutes", "action": "Scale CPU telemetry workers to 4 workers"}
+  Agreement with the rules: 0 of the LLM's 2 actions (precision 0.00), 0 of the rules' 1 (recall 0.00)
+Scenario: high_volume_crisis
+  Rules:
+    {"prediction": "Radiology surge in 5 minutes", "action": "Pre-warm 2 A100 GPUs"}
+    {"prediction": "Text processing surge in 15 minutes", "action": "Scale CPU text processors to 6 cores"}
+    {"prediction": "Multi-modal surge crisis in 2 minutes", "action": "Emergency scale: 3 A100 GPUs + 12 CPU cores"}
+  LLM (65.6 s):
+    {"prediction": "Next 15 minutes", "action": "Pre-warm 1 A100 GPU"}
+    {"prediction": "Next 15 minutes", "action": "Scale CPU telemetry workers to 4 workers"}
+  Agreement with the rules: 0 of the LLM's 2 actions (precision 0.00), 0 of the rules' 3 (recall 0.00)
+Mean precision 0.20, mean recall 0.30 over 5 scenarios
+```
 
-### **5. Execution Phase**
-- Real-time GPU/CPU resource allocation
-- Model loading and initialization
-- Container warming status
-- Performance impact estimates
-
-### **6. Monitoring Phase**
-- Prediction logging for analysis
-- Cost tracking and optimization
-- Performance metrics collection
-- Dashboard links for ongoing monitoring
-
-### **7. Summary Statistics**
-- Overall system performance
-- Cost savings achieved  
-- Processing time improvements
-- Clinical workflow impact
-
-This output shows users exactly how the predictive autoscaler transforms reactive elasticity into anticipatory preparedness, with concrete metrics and real-world clinical scenarios.
+The model found the GPU need on the PACS upload and the text surge at the shift change, but it also
+recommended emergency scaling at night and on a quiet weekend, and missed most of the crisis plan
+(mean precision 0.20, recall 0.30 against the rules). That is why its recommendations are checked
+and compared with the rules rather than applied directly.

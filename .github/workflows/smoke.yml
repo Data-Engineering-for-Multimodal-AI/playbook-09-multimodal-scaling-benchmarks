@@ -1,0 +1,39 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    # Local mode on CPU: models trained on real labels, the elastic worker runtime, the four
+    # clinical scenarios, predictive pre-warming, the advisors, and the Modal app definitions
+    # (nothing runs in Modal's cloud here; that needs an account)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    env:
+      UV_PYTHON: ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+      - name: Cache the pretrained models
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/torch
+          key: models-resnet18-minilm-qwen3
+      - name: Smoke test
+        run: make smoke
+      - name: Local LLM advisor demo (output shown in the README)
+        run: uv run python local_llm_scaling_demo.py
+      - name: Printed install line (plus torchvision) and the printed local commands
+        run: |
+          uv venv --seed --python ${{ matrix.python-version }} /tmp/pipenv
+          /tmp/pipenv/bin/python -m pip install -q --extra-index-url https://download.pytorch.org/whl/cpu \
+            modal sentence-transformers torch scikit-learn pandas openpyxl torchvision
+          /tmp/pipenv/bin/python run_serverless_demo.py --quick

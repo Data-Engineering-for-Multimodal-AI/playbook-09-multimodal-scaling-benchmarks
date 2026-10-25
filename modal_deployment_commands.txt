@@ -1,28 +1,39 @@
-
 # Modal Serverless Deployment Commands
 # ====================================
 
-# 1. First, authenticate with Modal (if not already done)
-modal auth new
+# 0. Install the dependencies and train the three models (the containers load them from models/)
+pip install -r requirements.txt
+python train_models.py
 
-# 2. Deploy the serverless application
+# 1. Authenticate with Modal (if not already done). GPUs need a payment method on the account.
+modal setup
+
+# 2. Deploy the serverless application (radiology on an A100 40 GB; ATLAS_GPU=T4, L4, ... or none)
 modal deploy serverless_multimodal_pipeline.py
 
-# 3. Run the clinical workload burst simulation
+# 3. Run the clinical workload burst simulation (four scenarios, about 3 minutes)
 modal run serverless_multimodal_pipeline.py::simulate_clinical_workload_bursts
 
-# 4. Run inference on specific data
-modal run serverless_multimodal_pipeline.py::multimodal_inference_dag \
-    --radiology-data='[{"study_id":"001","study_type":"MRI","diagnosis":"Stroke","slice_count":161}]' \
-    --telemetry-data='[{"patient_id":"P001","age_quantile":10,"vitals":{"heart_rate":[75,76,74]}}]' \
-    --clinical-notes='[{"note_id":"N001","medical_specialty":"Emergency","note":"Patient presents with chest pain"}]'
+# 4. Run inference on held-out cases (X-ray + labs + note each); the encoders run in parallel
+modal run serverless_multimodal_pipeline.py::multimodal_inference_dag --cases 10
 
-# 5. Monitor the application (opens dashboard)
+# 5. Predictive autoscaling: a surge at scaled-to-zero services vs pre-warmed ones (needs step 2)
+modal run predictive_autoscaler.py::demo_predictive_autoscaling
+
+# 6. LLM scaling advisor (Qwen3-4B on an L4 GPU; ATLAS_ADVISOR_GPU=none for CPU)
+modal run predictive_autoscaler.py::demo_llm_scaling_advisor
+
+# 7. Monitor the application and what it cost
 modal app list
 modal app logs atlas-health-multimodal
+modal billing report --for today
+
+# Optional: deploy the autoscaler with its every-5-minutes schedule. It pre-warms containers on the
+# schedule, which costs money until you stop it.
+ATLAS_ENABLE_SCHEDULE=1 modal deploy predictive_autoscaler.py
+modal app stop atlas-health-predictive-autoscaler
 
 # Key things to observe in Modal dashboard:
-# - GPU nodes spinning up for radiology workload
-# - CPU containers scaling independently  
-# - Automatic teardown after idle timeout
-# - Zero cost when no requests active
+# - GPU containers starting for the radiology burst, then stopping after 60 s idle
+# - CPU containers for labs and notes scaling independently
+# - Zero containers (and zero cost) when no requests are active
