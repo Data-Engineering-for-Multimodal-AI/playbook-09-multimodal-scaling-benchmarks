@@ -41,6 +41,10 @@ def _download_weights():
     SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 
+if modal.is_local() and not os.path.isdir("models"):
+    # The image includes the trained heads; without them `modal deploy` fails with "local dir ... does not exist"
+    raise SystemExit("No trained models in models/: run `python train_models.py` first")
+
 # One image for all three services: the libraries, the pretrained weights, the trained models,
 # the X-ray test images the workload sends (not the 1.1 GB training set) and the shared code
 image = (
