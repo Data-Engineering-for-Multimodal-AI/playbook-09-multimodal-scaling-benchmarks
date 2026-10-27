@@ -1,6 +1,6 @@
 # Serverless Multimodal Medical Pipeline
 
-**Chapter 9 playbook** from *Data Engineering for Multimodal AI* (O'Reilly, 2026). Page numbers to be confirmed.
+**Chapter 9 playbook** from *Data Engineering for Multimodal AI* (O'Reilly, 2026), pages 361–371 (Early Release page numbers; they may differ in the final print).
 Book: https://oreil.ly/data-engineering-multimodal
 
 > Want the code exactly as printed? Use the `first-edition` tag. This branch is the 2026 maintenance update; see [Differences from the printed book](#differences-from-the-printed-book).
@@ -61,7 +61,7 @@ Each service runs as a pool of worker processes that behaves like a serverless f
 
 ### 3. Run it on Modal
 
-You need a [Modal](https://modal.com) account. Run `modal setup` once. GPUs need a payment method on the account; without one, use `ATLAS_GPU=none` (below).
+You need a [Modal](https://modal.com) account. Run `modal setup` once (the book's `modal auth new`, page 363, is not a command in Modal 1.6). Train the models first (step 1): the image includes them, and the book's `modal deploy` (page 364) stops with a message if they're missing. GPUs need a payment method on the account; without one, use `ATLAS_GPU=none` (below).
 
 > **GPU path not run for this edition.** The default configuration (radiology on an A100 40 GB, the advisor on an L4) is written for Modal 1.x but was not run while testing this update: the test account had no payment method, which Modal requires for GPUs. Everything else on Modal was run on CPU containers (`ATLAS_GPU=none`, `ATLAS_ADVISOR_GPU=none`); see [Tested on](#tested-on). The code paths are the same apart from the device; on a GPU, expect shorter model compute times and a higher cost per second (A100 40 GB: $2.10 per hour, L4: $0.80 per hour at Modal's rates of 2026-10-24).
 
@@ -116,7 +116,9 @@ The billed cost of every Modal run made while testing (deploys, image builds, th
 
 ## Differences from the printed book
 
-| Printed book | This version | Why |
+The left column is the first edition: the code at the `first-edition` tag, which the book describes.
+
+| First edition | This version | Why |
 |---|---|---|
 | Python 3.8+; `pip install modal sentence-transformers torch scikit-learn pandas openpyxl` | Python 3.12+; `pip install -r requirements.txt` (pinned), or the book's line plus `torchvision` | Reproducible installs; the X-ray encoder needs torchvision |
 | `container_idle_timeout=` | `scaledown_window=` | Removed in Modal 1.0; the app failed at import |
@@ -151,7 +153,7 @@ Details, and how each file is used, are in [`sample-data/README.md`](sample-data
 
 ## Expected output
 
-All from runs on 2026-10-24. Local runs: fresh clone, macOS 26.5.1 (Apple M3), Python 3.12.15. Modal runs: Modal 1.6.2, CPU containers (`ATLAS_GPU=none`). Download and progress messages are left out. Latencies and cold starts depend on the machine and load; the scores and labels don't.
+All from runs on 2026-10-24. This is the output of this version; it may differ from the output printed in the book, and that's okay. Local runs: fresh clone, macOS 26.5.1 (Apple M3), Python 3.12.15. Modal runs: Modal 1.6.2, CPU containers (`ATLAS_GPU=none`). Download and progress messages are left out. Latencies and cold starts depend on the machine and load; the scores and labels don't.
 
 **`python train_models.py`**
 
