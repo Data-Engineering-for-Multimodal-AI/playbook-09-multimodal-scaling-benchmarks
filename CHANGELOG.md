@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026.10.1 (2026-10-27)
+
+Checked against the book (Early Release, pages 361–371).
+
+### Changed
+- `modal deploy serverless_multimodal_pipeline.py` without trained models stops with "run
+  `python train_models.py` first" instead of Modal's "local dir ... does not exist". The book's steps
+  (pages 363–365) don't include training.
+- README: page numbers; the book's `modal auth new` is not a command in Modal 1.6 (`modal setup`).
+
 ## 2026.10 (2026-10-24)
 
 Maintenance update. The code as printed in the book is tagged `first-edition`.
