@@ -36,7 +36,25 @@ jobs:
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: make smoke-full
       - name: One-command run
-        run: make run
+        run: make run | tee /tmp/run.txt
+      # README "Run it", steps 2 and 4: the key output lines, then one case scored by hand
+      - name: Run it, steps 2 and 4
+        run: |
+          grep -q "Morning imaging surge - GPU intensive (20 cases, burst)" /tmp/run.txt
+          grep -q "at Modal's rates of 2026-10-24 (radiology on A100-40GB)" /tmp/run.txt
+          make triage XRAY=sample-data/chest_xray/test/PNEUMONIA/person100_bacteria_475.jpeg NOTE="Productive cough and fever for three days, crackles at the right base." | tee /tmp/triage.txt
+          grep -q "radiology P(pneumonia)" /tmp/triage.txt
+          grep -q "triage score" /tmp/triage.txt
+      - name: Use your own data (file checks)
+        run: uv run --frozen pytest -q tests/test_own_data.py
+      - name: Try this 1-3 (local workers)
+        run: |
+          make try-batch-size | tee /tmp/t2.txt
+          grep -q "X-rays to 2 warm radiology workers" /tmp/t2.txt
+          make try-max-workers | tee /tmp/t3.txt
+          grep -q "scaled-to-zero radiology pool" /tmp/t3.txt
+          make try-scaledown-window | tee /tmp/t1.txt
+          grep -q " 90s " /tmp/t1.txt
       - name: The tree is unchanged (serverless_cost_analysis.json is not rewritten)
         run: git diff --exit-code
       # Slow on CPU (push runs took 12-14 minutes with it), so it runs only on request: Actions > smoke > Run workflow.
@@ -59,4 +77,5 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           push: never
-          runCmd: make run
+          # make run (trains the models, then the four scenarios), timed from a clean container
+          runCmd: start=$(date +%s) && make run && echo "Time to first output in a clean devcontainer was $(( $(date +%s) - start )) s"

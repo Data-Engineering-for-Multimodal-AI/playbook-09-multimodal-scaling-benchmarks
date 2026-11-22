@@ -7,11 +7,238 @@ Hospital workloads arrive in bursts, and GPUs left running between bursts cost m
 
 **What you'll work with.** You'll scale each modality on its own, run on serverless GPUs that scale to zero, and compare that with always-on clusters such as Spark, Ray and Beam.
 
-> Want the code exactly as printed? Use the `first-edition` tag. This branch is the 2026 maintenance update; see [Differences from the printed book](#differences-from-the-printed-book).
+> Following the book? Its Steps 1–4 are in [Run it the way the book does](#run-it-the-way-the-book-does) and still work as printed. Want the code exactly as printed? Use the `first-edition` tag. This branch is the 2026 maintenance update; see [Differences from the printed book](#differences-from-the-printed-book).
 
-## What you'll build
+## Run it
 
-A multimodal triage pipeline for Atlas Health, a fictional hospital network, that scales elastically: GPU capacity appears when a burst of X-rays arrives and disappears when it's done, so you pay only while it works. You run it two ways, on Modal's serverless GPUs and on your own machine, and measure what elasticity costs and buys.
+You need [uv](https://docs.astral.sh/uv/) and `make`. No Docker, no Modal account, no API keys: every step runs on your machine. Or open the repo in a GitHub Codespace, where both are ready. On Windows without `make`, use a Codespace or the book's steps below.
+
+The times below are from a Mac (Apple M3, 8 GB) that was running other jobs at the same time (load average about 35), so they are slower than on an idle machine, and cold starts most of all. Times from CI (Ubuntu, 4 cores) are given where they exist.
+
+**1. Get the code.** The clone includes the 1.2 GB of sample data (X-rays, lab results, notes).
+
+```bash
+git clone https://github.com/Data-Engineering-for-Multimodal-AI/playbook-09-multimodal-scaling-benchmarks.git
+cd playbook-09-multimodal-scaling-benchmarks
+```
+
+**2. Train the models and run the four clinical scenarios.** Installs the locked dependencies, trains the three models if `models/` is empty (`python train_models.py`), then runs the chapter's four scenarios on local elastic workers in their small form (`python run_serverless_demo.py --quick`). On a fresh clone this took 9 min 17 s on the Mac, most of it training; a second run, with the models trained, took 3 min 6 s.
+
+```bash
+make run
+```
+
+You should see the test scores of the three models, then one table per scenario and the cost of the worker time:
+
+```
+  radiology pneumonia vs normal chest X-ray          AUC 0.933  accuracy 0.840  F1 0.884  (624 records, 390 positive)
+...
+Morning imaging surge - GPU intensive (20 cases, burst)
+  modality   requests workers  cold   p50 s   p95 s   max s accuracy
+  radiology         4       3     4   22.80   22.93   22.94    0.850
+...
+  total $0.2074 at Modal's rates of 2026-10-24 (radiology on A100-40GB)
+```
+
+Every request in the first burst waited for a cold start: a worker process starting and loading its model. The last line prices the measured worker-seconds as Modal containers with the same resources; most of that time is cold starts and idle time before scale-down.
+
+**3. Pre-warm for a surge.** Sends a 50-case surge to scaled-to-zero workers, then pre-warms the workers the hospital schedule predicts and sends the surge again (`python run_serverless_demo.py --predictive`). This took 7 min 7 s on the busy Mac.
+
+```bash
+make predictive
+```
+
+```
+            reactive p95 s  pre-warmed p95 s  cold starts
+radiology           138.69             13.07    10 -> 0
+labs                 24.75              0.66    10 -> 0
+notes               190.54             10.31    10 -> 0
+Surge wall time: 190.9 s reactive, 13.4 s pre-warmed
+```
+
+On the busy Mac, cold starts took most of the reactive surge; after pre-warming, no request waited for one. [Expected output](#expected-output) has the same demo from 2026-10-24 (15.6 s against 2.7 s).
+
+**4. Score a case yourself.** Give an X-ray, a note, or both. The models load in this process, so you see what a cold start costs one request.
+
+```bash
+make triage XRAY=sample-data/chest_xray/test/PNEUMONIA/person100_bacteria_475.jpeg \
+            NOTE="Productive cough and fever for three days, crackles at the right base."
+```
+
+```
+radiology P(pneumonia) = 0.990   model load 24.7 s, scoring 0.57 s
+notes     P(cardiovascular/pulmonary note) = 0.055   model load 30.8 s, scoring 0.77 s
+triage score 0.723 (weights radiology 0.5, notes 0.2)  URGENT
+```
+
+Loading each model took about 40 times longer than scoring with it. The note model gave this short pulmonary note 0.055: it was trained on long transcriptions (see [Before production](#before-production)). Try X-rays from `sample-data/chest_xray/test/NORMAL/` and your own sentences.
+
+**5. Clean up.**
+
+```bash
+make clean
+```
+
+This deletes the trained models (`models/`), the embedding cache (`.cache/`), the results (`results/`) and the test cache. The sample data and the downloaded encoders stay. The next `make run` trains the models again.
+
+## How much time do you have?
+
+| Time | What to do |
+|---|---|
+| 15 minutes | [Run it](#run-it), steps 1, 2 and 4. On the busy Mac, step 2 took 9 min 17 s on a fresh clone and 3 min 6 s after that. |
+| 1 hour | Step 3, then the three [Try this](#try-this) experiments (2 to 6 minutes each on the busy Mac). |
+| 1 day | [Use your own data](#use-your-own-data), the full four scenarios (`make demo`, 3 min 3 s on a Mac in October), the Modal steps in [Run it the way the book does](#run-it-the-way-the-book-does) if you have an account, and [Before production](#before-production). |
+
+## Try this
+
+Each experiment changes one thing and measures the effect, on local worker processes. None needs a Modal account. The numbers below are from the busy Mac on 2026-11-21; yours will differ, but the comparisons within each table hold.
+
+**1. What does the scale-down window cost, and what does it save?** Sends two bursts of 10 X-rays to the radiology service with 15 quiet seconds between them, with scale-down windows of 5, 30 and 90 seconds.
+
+```bash
+make try-scaledown-window
+```
+
+```
+ window  1st burst  2nd burst  2nd burst cold  workers started  worker-s  at A100 rate
+     5s      30.7s      51.4s          2 of 2                4     183.7       $0.1107
+    30s      49.7s       2.8s          0 of 2                2     195.3       $0.1177
+    90s      48.0s       5.0s          0 of 2                2     316.5       $0.1908
+```
+
+With a 5-second window the workers stopped between the bursts, and the second burst waited 51.4 s for new ones. It cost about as much as the 30-second window, because a serverless platform bills the cold start too. The 90-second window kept the workers idle for longer than the traffic needed. The repo's windows are 60 s (radiology), 30 s (labs) and 45 s (notes); change `GAP` in `experiments/scaledown_window.py` to the gap in your traffic.
+
+**2. How many X-rays per request?** Sends the same 40 X-rays to 2 warm radiology workers in requests of 1, 5, 10 and 40.
+
+```bash
+make try-batch-size
+```
+
+```
+per request  requests  all done  X-rays/s  slowest request  compute per X-ray
+          1        40      2.2s      18.3             2.2s             107 ms
+          5         8      1.9s      21.5             1.9s              92 ms
+         10         4      2.0s      20.1             2.0s              98 ms
+         40         1      4.4s       9.2             4.4s             109 ms
+```
+
+On CPU, batching saves little per X-ray (92 against 107 ms). Sending everything in one request halves the throughput, because one request goes to one worker and the other one waits. The benchmark sends 5 per request: keep at least as many requests as workers.
+
+**3. How far should one service scale out?** Sends a burst of 40 X-rays to a radiology pool that starts at zero, with a cap of 1, 2 and 4 workers sharing the machine's 8 cores.
+
+```bash
+make try-max-workers
+```
+
+```
+max workers  threads each   burst  workers started  mean cold start  worker-s  at A100 rate
+          1             8   18.7s                1            12.3s      23.9       $0.0144
+          2             4   26.7s                2            23.7s      63.5       $0.0383
+          4             2   45.0s                4            41.6s     199.5       $0.1203
+```
+
+On one machine, more workers made the burst slower and 8 times more expensive: they load their models at the same time and compete for the same cores and memory. On Modal each container gets its own resources, but each one still pays its own cold start. Change the caps in `experiments/max_workers.py`, or set `max_workers` in `LocalBackend`.
+
+## Use your own data
+
+Put your cases in a folder, one row per case in `cases.csv`, with the X-rays next to it:
+
+```
+my_cases/
+  cases.csv    case_id, then any of:
+                 xray        a file name in xrays/ (.jpeg .jpg .png)
+                 note        the clinical note text (the first 1,000 characters are used)
+                 the 14 blood counts in atlas_pipeline/config.py (LAB_COLUMNS) and
+                 "Patient age quantile" (0-19), standardized as in the Einstein dataset
+                 xray_label, labs_label, note_label   true labels, 0 or 1 (optional)
+  xrays/       patient_01.jpeg  patient_02.jpeg ...
+```
+
+Each case needs at least one modality; the triage score uses the ones it has. Lab column names may leave out the dataset's extra and non-breaking spaces. Check the folder first. This reads every file and runs nothing:
+
+```bash
+make check-data DIR=my_cases
+```
+
+```
+my_cases: 7 cases, 6 X-rays, 4 lab panels, 4 notes. All checks passed.
+```
+
+It reports every problem with the file and the reason, and runs nothing if there is one. These are from a copy of that folder with mistakes put in on purpose:
+
+```
+9 problem(s) in broken; nothing was run:
+  xrays/patient_01.jpeg: Git LFS pointer, not the image (run git lfs pull)
+  cases.csv line 3: duplicate case_id P01
+  cases.csv line 4: Platelets 250 doesn't look standardized (expected a z-score, about -5 to 5)
+  cases.csv line 5: Patient age quantile 35 is not a whole number from 0 to 19
+  xrays/patient_05.dcm: not an image type the encoder reads (.jpeg .jpg .png)
+  cases.csv line 6: case P05 has no X-ray, note or lab values
+  xrays/patient_06.jpeg: too small (40x40), needs at least 64x64
+  cases.csv line 7: xray_label 'yes' is not 0 or 1
+  cases.csv line 9: case P08 has no X-ray, note or lab values
+```
+
+It also checks for a missing or non-UTF-8 `cases.csv`, unknown columns, empty IDs, X-rays that are missing, empty or won't open, lab values that aren't numbers, and lab values without the age quantile. A raw platelet count would not fail in the model; it would give a meaningless score, which is why the check exists. When everything passes, score the cases:
+
+```bash
+make score DIR=my_cases
+```
+
+```
+case         radiology   labs  notes  triage
+P01              0.981  0.355  0.119   0.621  URGENT
+P02              0.973  0.552  0.096   0.671  URGENT
+P03              0.997  0.274  0.962   0.773  URGENT
+P04              0.001  0.468      -   0.176
+P05              1.000      -      -   1.000  URGENT
+P06              1.000      -      -   1.000  URGENT
+P07                  -      -  0.495   0.495
+radiology: 5 of 6 labelled cases right
+labs: 2 of 4 labelled cases right
+notes: 3 of 3 labelled cases right
+
+Scored in 46.1 s. Workers: radiology 2 (cold start 30.42 s), labs 1 (cold start 13.31 s), notes 1 (cold start 45.74 s). $0.0483 at Modal's rates.
+Results saved to results/own_cases.json
+```
+
+This folder was made from held-out sample records (cases P01 to P06) plus one note written by hand (P07). `make score` uses the same local worker pools as the benchmark, with 5-second scale-down windows. Nothing is sent to Modal.
+
+## What you end up with
+
+Three trained models behind elastic services that scale to zero, a benchmark that measures their cold starts, latency and cost, and a scorer for your own cases.
+
+Skills you'll practice:
+- Scaling each modality's service on its own, with its own resources and scale-down window
+- Measuring cold starts, latency percentiles and worker-seconds instead of estimating them
+- Pricing measured worker time at a serverless platform's rates
+- Pre-warming capacity from a forecast, and measuring what it saves
+- Checking input data against what the models were trained on
+
+## Before production
+
+This playbook runs on CPU with public sample data. Before you run something like it for real:
+
+1. **Make cold starts shorter.** Loading the X-ray and note models took 24.7 s and 30.8 s on the busy Mac, against under 1 s to score a case ([Run it](#run-it), step 4). Bake the weights into the container image, load them once per container, and keep the image small. *Chapter 9, "Dynamic Model Parking with Checkpoint Streaming" (page 344).*
+2. **Set the scale-down window from your traffic.** A window shorter than the gap between bursts made the second burst wait 51.4 s and saved almost nothing ([Try this 1](#try-this)). Measure the gaps in your traffic, and pre-warm from the schedule where you can (`make predictive`). *Chapter 9, "Auto-Scaling Strategies for Multimodal Workloads" (page 332).*
+3. **Batch, but keep enough requests for every worker.** One 40-X-ray request ran at 9.2 X-rays/s, against 21.5 in requests of 5 ([Try this 2](#try-this)). *Chapter 9, "Batching and Inference Tiering" (page 344).*
+4. **Cap scale-out where workers share hardware.** Four workers on one 8-core machine made a burst 2.4 times slower and 8 times more expensive than one ([Try this 3](#try-this)). *Chapter 9, "Modality-Specific Scaling Profiles" (page 332).*
+5. **Check that new data looks like the training data.** The note model scores the first 1,000 characters of long transcriptions; a short pulmonary note scored 0.055 and another 0.495. Track the score distribution per modality and alert when it shifts. *Chapter 10, "Detecting Drift" (page 384).*
+6. **Validate inputs at the service.** The services score any lab vector and open any path they are sent; the lab model expects standardized values. `make check-data` checks a folder; the services should check each request too. *Chapter 4, "Validation, Transformation, Observability, and Annotation Across Modalities" (page 119).*
+7. **Retry and isolate failures.** When one local worker fails to start, `ElasticPool` fails every request waiting for that service, and nothing is retried. *Chapter 9, "Fault Tolerance and Recovery" (page 327).*
+8. **Version the models with the triage rule.** The triage weights (0.5, 0.3, 0.2) and the urgent threshold (0.6) are fixed in `atlas_pipeline/config.py`, and `models/metrics.json` records scores but no version. Record which models and which rule produced each triage score. *Chapter 8, "Data Versioning and Experiment Tracking for Multimodal AI" (page 276).*
+9. **Protect patient data.** The sample records are public and de-identified; real ones are not. The Modal image carries the test X-rays and the trained heads. Encrypt data in transit and at rest, and limit who can deploy. *Chapter 11, "Protecting Data Across the Pipeline" (page 421).*
+10. **Track cost per case.** Each run prints its cost at Modal's rates once; record it per run and per modality, with the rates' date. *Chapter 9, "Cost Optimization for Cloud-Based Multimodal AI Infrastructure" (page 342).*
+
+## What it costs
+
+| Where you run it | Cost |
+|---|---|
+| Your machine | $0. Everything in [Run it](#run-it), [Try this](#try-this) and [Use your own data](#use-your-own-data) runs locally: no API keys, no Modal account. About 2.3 GB of disk on a Mac: 1.2 GB of sample data and 1 GB for the environment; the encoders add about 135 MB, and the LLM demos another 4 GB. |
+| A GitHub Codespace (2 cores, 8 GB, the default size; this repo asks for none) | Estimated $0.18 per hour at GitHub's list price (November 2026). A free personal account includes 120 core-hours a month, about 60 hours on this machine. |
+| Modal | Estimated $0.19 to $0.21 for the `make run` workload (75 cases) as Modal containers, from the worker-seconds measured locally: $0.2074 and $0.1882 in two runs on the Mac, radiology priced as an A100 40 GB ($0.000583 per second), CPU at $0.0000131 per core per second and memory at $0.00000222 per GiB per second ([Modal pricing](https://modal.com/pricing), November 2026). Most of it is radiology's GPU time. The local workers ran on CPU, so on a GPU the compute and cold-start times, and with them the total, will differ. Modal's Starter plan includes $30 of free credits a month. The billed costs of the edition's Modal runs on CPU containers are in [Tested on](#tested-on). |
+
+## How it works
 
 - **Three services, three modalities, real data**:
   - Chest X-rays (ResNet-18 plus a pneumonia classifier, on a GPU).
@@ -26,7 +253,9 @@ A multimodal triage pipeline for Atlas Health, a fictional hospital network, tha
 - **Predictive autoscaling**: forecast surges from the hospital schedule, pre-warm containers before they arrive, and measure the difference.
 - **An LLM scaling advisor**: a small open language model reads the same signals as the chapter's rules. Its recommendations are checked and compared with the rules.
 
-## Quick start
+## Run it the way the book does
+
+These are the book's Steps 1–4 (pages 359–366), with the fixes listed in [Differences from the printed book](#differences-from-the-printed-book). Steps 1 and 2 run locally; step 3 needs a Modal account.
 
 You need Python 3.12 or newer and about 4 GB of disk space (the environment, the 1.2 GB of X-rays and the pretrained encoders), plus 4 GB for the LLM demos.
 
@@ -371,7 +600,12 @@ The rules are the chapter's heuristics. The model reads the same metrics and ans
 ├── sample_autoscaler_output.md         # Recorded output of the Modal predictive and advisor demos
 ├── SERVERLESS_IMPLEMENTATION_SUMMARY.md
 ├── modal_deployment_commands.txt
-└── tests/                              # Smoke tests (make smoke)
+├── scripts/
+│   ├── triage.py                       # make triage: score one case by hand
+│   └── own_cases.py                    # make check-data, make score: your own cases
+├── experiments/                        # make try-*: the three Try this experiments
+├── Makefile                            # make run, predictive, triage, check-data, score, try-*, smoke, clean
+└── tests/                              # Smoke tests (make smoke); test_own_data.py checks make check-data
 ```
 
 ## Contributing

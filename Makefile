@@ -1,4 +1,4 @@
-.PHONY: setup run smoke smoke-full train demo predictive modal-deploy modal-benchmark modal-predictive clean
+.PHONY: setup run smoke smoke-full train demo predictive triage check-data score try-scaledown-window try-batch-size try-max-workers modal-deploy modal-benchmark modal-predictive clean
 
 # A bare `make` runs the smoke test, as it did before the uniform targets were added.
 .DEFAULT_GOAL := smoke
@@ -19,6 +19,32 @@ setup:
 run: setup
 	mkdir -p results
 	cd results && uv run --frozen python ../run_serverless_demo.py --quick
+
+# Score one case by hand: make triage XRAY=path/to/xray.jpeg NOTE="a clinical note" (either or both)
+triage: setup
+	@uv run --frozen python scripts/triage.py $(if $(XRAY),--xray "$(XRAY)") $(if $(NOTE),--note "$(NOTE)")
+
+# Your own cases: cases.csv and xrays/ in DIR (see README, "Use your own data").
+# check-data checks every file and runs nothing; score runs the cases on local elastic workers.
+#   make check-data DIR=my_cases
+#   make score DIR=my_cases
+check-data:
+	@test -n "$(DIR)" || { echo "Usage: make check-data DIR=path/to/folder"; exit 2; }
+	@uv run --frozen python scripts/own_cases.py --dir "$(DIR)" --check-only
+
+score: setup
+	@test -n "$(DIR)" || { echo "Usage: make score DIR=path/to/folder"; exit 2; }
+	@uv run --frozen python scripts/own_cases.py --dir "$(DIR)"
+
+# Try this: three measured experiments on local workers (see README, "Try this"). No Modal account.
+try-scaledown-window: setup
+	@uv run --frozen python experiments/scaledown_window.py
+
+try-batch-size: setup
+	@uv run --frozen python experiments/batch_size.py
+
+try-max-workers: setup
+	@uv run --frozen python experiments/max_workers.py
 
 # Smoke tests: local mode on CPU. Skips the slow local LLM advisor test (make smoke-full runs it).
 smoke:

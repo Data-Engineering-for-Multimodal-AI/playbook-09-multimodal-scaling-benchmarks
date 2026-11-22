@@ -5,6 +5,16 @@
 Nothing the book shows has changed.
 
 ### Added
+- `make triage XRAY=... NOTE=...`: score one case by hand with the trained models (`scripts/triage.py`).
+- `make check-data DIR=...` and `make score DIR=...`: check a folder of your own cases (`cases.csv`
+  and `xrays/`) and score them on local elastic workers (`scripts/own_cases.py`,
+  `tests/test_own_data.py`). Nothing is sent to Modal.
+- Three measured experiments on local workers: `make try-scaledown-window`, `make try-batch-size`,
+  `make try-max-workers` (`experiments/`).
+- README: numbered Run it steps, time tiers, Try this, Use your own data, What you end up with,
+  Before production, What it costs (with a Modal estimate from the measured local workload).
+- CI: the Run it steps, Try this 1-3, the own-data checks, and the time to first output in a clean
+  devcontainer. The local LLM advisor demo still runs only on manual runs.
 - `make setup`, `make run` and `make smoke-full`. `make setup` installs the locked dependencies and
   trains the models if `models/` doesn't have them. `make run` runs the four clinical scenarios on
   local elastic workers (`run_serverless_demo.py --quick`); no Modal account is needed.
@@ -16,6 +26,8 @@ Nothing the book shows has changed.
   and a job that builds the devcontainer and runs `make run` inside it.
 
 ### Changed
+- README: "What you'll build" is now "How it works", and "Quick start" is now "Run it the way the
+  book does", with the same commands.
 - CI: the local LLM advisor demo step runs only on manual runs (Actions > smoke > Run workflow).
 - README opening: a title that says what you'll do, three sentences on why, the example and what you'll do, then the data engineering problem and what you'll work with.
 - Book page numbers now match the printed book (they were Early Release page numbers).
