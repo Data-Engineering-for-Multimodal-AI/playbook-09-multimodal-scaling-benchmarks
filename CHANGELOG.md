@@ -16,6 +16,7 @@ Nothing the book shows has changed.
   and a job that builds the devcontainer and runs `make run` inside it.
 
 ### Changed
+- Book page numbers now match the printed book (they were Early Release page numbers).
 - `make smoke` skips the local LLM advisor test (Qwen3-1.7B on CPU, with a one-hour timeout). It is
   marked `slow`. CI runs `make smoke` on pushes and pull requests, and `make smoke-full` on the
   weekly run and on manual runs.

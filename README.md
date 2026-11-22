@@ -1,6 +1,6 @@
 # Serverless Multimodal Medical Pipeline
 
-**Chapter 9 playbook** from *Data Engineering for Multimodal AI* (O'Reilly, 2026), pages 361–371 (Early Release page numbers; they may differ in the final print).
+**Chapter 9 playbook** from *Data Engineering for Multimodal AI* (O'Reilly, 2026), pages 357–367.
 Book: https://oreil.ly/data-engineering-multimodal
 
 > Want the code exactly as printed? Use the `first-edition` tag. This branch is the 2026 maintenance update; see [Differences from the printed book](#differences-from-the-printed-book).
@@ -61,7 +61,7 @@ Each service runs as a pool of worker processes that behaves like a serverless f
 
 ### 3. Run it on Modal
 
-You need a [Modal](https://modal.com) account. Run `modal setup` once (the book's `modal auth new`, page 363, is not a command in Modal 1.6). Train the models first (step 1): the image includes them, and the book's `modal deploy` (page 364) stops with a message if they're missing. GPUs need a payment method on the account; without one, use `ATLAS_GPU=none` (below).
+You need a [Modal](https://modal.com) account. Run `modal setup` once (the book's `modal auth new`, page 359, is not a command in Modal 1.6). Train the models first (step 1): the image includes them, and the book's `modal deploy` (page 360) stops with a message if they're missing. GPUs need a payment method on the account; without one, use `ATLAS_GPU=none` (below).
 
 > **GPU path not run for this edition.** The default configuration (radiology on an A100 40 GB, the advisor on an L4) is written for Modal 1.x but was not run while testing this update: the test account had no payment method, which Modal requires for GPUs. Everything else on Modal was run on CPU containers (`ATLAS_GPU=none`, `ATLAS_ADVISOR_GPU=none`); see [Tested on](#tested-on). The code paths are the same apart from the device; on a GPU, expect shorter model compute times and a higher cost per second (A100 40 GB: $2.10 per hour, L4: $0.80 per hour at Modal's rates of 2026-10-24).
 
