@@ -39,7 +39,7 @@ jobs:
         run: make run
       - name: The tree is unchanged (serverless_cost_analysis.json is not rewritten)
         run: git diff --exit-code
-      # Slow (10+ minutes on CPU), so it runs only on request: Actions > smoke > Run workflow.
+      # Slow on CPU (push runs took 12-14 minutes with it), so it runs only on request: Actions > smoke > Run workflow.
       - name: Local LLM advisor demo (output shown in the README; manual runs only)
         if: github.event_name == 'workflow_dispatch'
         run: uv run python local_llm_scaling_demo.py
