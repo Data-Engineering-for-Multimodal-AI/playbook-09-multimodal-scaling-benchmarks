@@ -39,3 +39,4 @@ explicit = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["slow: the local LLM advisor demo (Qwen3-1.7B on CPU); make smoke skips it, make smoke-full runs it"]
