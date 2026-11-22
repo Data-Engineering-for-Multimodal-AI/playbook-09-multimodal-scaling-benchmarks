@@ -1,5 +1,31 @@
 # Changelog
 
+## Unreleased (v1.1.0)
+
+Nothing the book shows has changed.
+
+### Added
+- `make setup`, `make run` and `make smoke-full`. `make setup` installs the locked dependencies and
+  trains the models if `models/` doesn't have them. `make run` runs the four clinical scenarios on
+  local elastic workers (`run_serverless_demo.py --quick`); no Modal account is needed.
+  `make smoke-full` runs every smoke test, including the local LLM advisor test. `make clean` and
+  the other existing targets are unchanged.
+- `.devcontainer/` so the repo opens in GitHub Codespaces with dependencies installed and the models
+  trained.
+- CI: a weekly scheduled run, a `make run` step, a check that the tree is unchanged after the run,
+  and a job that builds the devcontainer and runs `make run` inside it.
+
+### Changed
+- `make smoke` skips the local LLM advisor test (Qwen3-1.7B on CPU, with a one-hour timeout). It is
+  marked `slow`. CI runs `make smoke` on pushes and pull requests, and `make smoke-full` on the
+  weekly run and on manual runs.
+
+### Fixed
+- `test_sample_data` failed on macOS when Finder had written a `.DS_Store` into `sample-data/`. It
+  now skips dotfiles.
+- The smoke tests rewrote the committed `serverless_cost_analysis.json`. The test now runs the demo
+  from a temporary folder. `python run_serverless_demo.py` still writes the file where it did.
+
 ## 2026.10.1 (2026-10-27)
 
 Checked against the book (Early Release, pages 361–371).

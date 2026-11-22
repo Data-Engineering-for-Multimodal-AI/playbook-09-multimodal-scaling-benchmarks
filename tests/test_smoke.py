@@ -1,9 +1,10 @@
 """Smoke tests: data, models, the local elastic runtime, the benchmark, forecasting and the advisors.
 
-Run with `make smoke` (or `uv run pytest -q`). CPU only, about 10 minutes the first time: trains the
-models on a small X-ray sample (ATLAS_XRAY_TRAIN_PER_CLASS=100) and downloads ResNet-18,
-all-MiniLM-L6-v2 and Qwen3-1.7B. The Modal app definitions are checked without running anything in
-the cloud (that needs a Modal account; see the README).
+Run with `make smoke` (or `uv run pytest -q -m "not slow"`). CPU only: trains the models on a small
+X-ray sample (ATLAS_XRAY_TRAIN_PER_CLASS=100) and downloads ResNet-18 and all-MiniLM-L6-v2.
+`make smoke-full` (or `uv run pytest -q`) also runs the slow test, the local LLM advisor demo, which
+downloads Qwen3-1.7B and runs it on CPU. The Modal app definitions are checked without running
+anything in the cloud (that needs a Modal account; see the README).
 """
 import json
 import os
@@ -18,8 +19,8 @@ sys.path.insert(0, ROOT)
 os.environ.setdefault("ATLAS_XRAY_TRAIN_PER_CLASS", "100")
 
 
-def run(*args, timeout=1800, env=None):
-    result = subprocess.run([sys.executable, *args], cwd=ROOT, capture_output=True, text=True, timeout=timeout,
+def run(*args, timeout=1800, env=None, cwd=ROOT):
+    result = subprocess.run([sys.executable, *args], cwd=cwd, capture_output=True, text=True, timeout=timeout,
                             env={**os.environ, **(env or {})})
     assert result.returncode == 0, result.stdout[-4000:] + result.stderr[-4000:]
     return result.stdout
@@ -38,7 +39,7 @@ def test_sample_data():
     with open(os.path.join(ROOT, "sample-data", "README.md")) as fh:
         readme = fh.read()
     for name in os.listdir(os.path.join(ROOT, "sample-data")):
-        if name != "README.md":
+        if name != "README.md" and not name.startswith("."):   # skip .DS_Store and other dotfiles
             assert f"`{name}" in readme, name
 
 
@@ -90,8 +91,10 @@ def test_elastic_pool_scales_out_and_to_zero(models):
         pool.close()
 
 
-def test_run_serverless_demo_quick(models):
-    out = run("run_serverless_demo.py", "--quick")
+def test_run_serverless_demo_quick(models, tmp_path):
+    # Run from a temporary folder: the demo writes serverless_cost_analysis.json to the current
+    # folder, and the committed copy in the repository should stay as it is.
+    out = run(os.path.join(ROOT, "run_serverless_demo.py"), "--quick", cwd=tmp_path)
     assert "Morning imaging surge" in out and "Weekend light load" in out
     with open(os.path.join(ROOT, "results", "local_benchmark.json")) as fh:
         results = json.load(fh)
@@ -99,7 +102,7 @@ def test_run_serverless_demo_quick(models):
     surge = results["scenarios"][0]["modalities"]
     assert surge["radiology"]["cold_start_requests"] > 0 and surge["radiology"]["accuracy"] > 0.7
     assert all(w["workers_started"] > 0 for w in results["workers"].values())
-    with open(os.path.join(ROOT, "serverless_cost_analysis.json")) as fh:
+    with open(tmp_path / "serverless_cost_analysis.json") as fh:
         assert json.load(fh)["total_cost_at_modal_rates_usd"] > 0
 
 
@@ -132,6 +135,7 @@ def test_rule_advisor_and_action_check():
     assert [v["action"] for v in valid] == ["Pre-warm 2 A100 GPUs"] and "Buy more GPUs" in error
 
 
+@pytest.mark.slow
 def test_llm_advisor_runs():
     out = run("local_llm_scaling_demo.py", timeout=3600)
     assert out.count("Scenario:") == 3 and "LLM (" in out

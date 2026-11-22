@@ -4,6 +4,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly, Monday 06:00 UTC, so breakage in upstream packages shows up
 
 jobs:
   smoke:
@@ -28,7 +30,15 @@ jobs:
             ~/.cache/torch
           key: models-resnet18-minilm-qwen3
       - name: Smoke test
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: make smoke
+      - name: Full smoke test, with the local LLM advisor test (weekly and manual runs)
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: make smoke-full
+      - name: One-command run
+        run: make run
+      - name: The tree is unchanged (serverless_cost_analysis.json is not rewritten)
+        run: git diff --exit-code
       - name: Local LLM advisor demo (output shown in the README)
         run: uv run python local_llm_scaling_demo.py
       - name: Printed install line (plus torchvision) and the printed local commands
@@ -37,3 +47,14 @@ jobs:
           /tmp/pipenv/bin/python -m pip install -q --extra-index-url https://download.pytorch.org/whl/cpu \
             modal sentence-transformers torch scikit-learn pandas openpyxl torchvision
           /tmp/pipenv/bin/python run_serverless_demo.py --quick
+
+  devcontainer:
+    # Builds .devcontainer/ the way Codespaces does and runs the playbook inside it.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the devcontainer and run the playbook
+        uses: devcontainers/ci@v0.3
+        with:
+          push: never
+          runCmd: make run
