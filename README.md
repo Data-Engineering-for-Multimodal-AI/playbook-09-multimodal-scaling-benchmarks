@@ -22,7 +22,7 @@ git clone https://github.com/Data-Engineering-for-Multimodal-AI/playbook-09-mult
 cd playbook-09-multimodal-scaling-benchmarks
 ```
 
-**2. Train the models and run the four clinical scenarios.** Installs the locked dependencies, trains the three models if `models/` is empty (`python train_models.py`), then runs the chapter's four scenarios on local elastic workers in their small form (`python run_serverless_demo.py --quick`). On a fresh clone this took 9 min 17 s on the Mac, most of it training; a second run, with the models trained, took 3 min 6 s.
+**2. Train the models and run the four clinical scenarios.** Installs the locked dependencies, trains the three models if `models/` is empty (`python train_models.py`), then runs the chapter's four scenarios on local elastic workers in their small form (`python run_serverless_demo.py --quick`). On a fresh clone this took 9 min 17 s on the Mac, most of it training; a second run, with the models trained, took 3 min 6 s. In CI, with the models trained, it took 46 s.
 
 ```bash
 make run
@@ -86,12 +86,12 @@ This deletes the trained models (`models/`), the embedding cache (`.cache/`), th
 | Time | What to do |
 |---|---|
 | 15 minutes | [Run it](#run-it), steps 1, 2 and 4. On the busy Mac, step 2 took 9 min 17 s on a fresh clone and 3 min 6 s after that. |
-| 1 hour | Step 3, then the three [Try this](#try-this) experiments (2 to 6 minutes each on the busy Mac). |
+| 1 hour | Step 3, then the three [Try this](#try-this) experiments (under a minute each in CI, 2 to 6 minutes on the busy Mac). |
 | 1 day | [Use your own data](#use-your-own-data), the full four scenarios (`make demo`, 3 min 3 s on a Mac in October), the Modal steps in [Run it the way the book does](#run-it-the-way-the-book-does) if you have an account, and [Before production](#before-production). |
 
 ## Try this
 
-Each experiment changes one thing and measures the effect, on local worker processes. None needs a Modal account. The numbers below are from the busy Mac on 2026-11-21; yours will differ, but the comparisons within each table hold.
+Each experiment changes one thing and measures the effect, on local worker processes. None needs a Modal account. The tables below are from CI on 2026-11-22 (Ubuntu, 4 cores, nothing else running); each experiment took under a minute there. On the busy Mac the same experiments took 2 to 6 minutes, and where the results differ, the text says how.
 
 **1. What does the scale-down window cost, and what does it save?** Sends two bursts of 10 X-rays to the radiology service with 15 quiet seconds between them, with scale-down windows of 5, 30 and 90 seconds.
 
@@ -101,12 +101,12 @@ make try-scaledown-window
 
 ```
  window  1st burst  2nd burst  2nd burst cold  workers started  worker-s  at A100 rate
-     5s      30.7s      51.4s          2 of 2                4     183.7       $0.1107
-    30s      49.7s       2.8s          0 of 2                2     195.3       $0.1177
-    90s      48.0s       5.0s          0 of 2                2     316.5       $0.1908
+     5s       3.7s       3.8s          2 of 2                4      35.4       $0.0213
+    30s       4.1s       0.3s          0 of 2                2      98.8       $0.0596
+    90s       4.2s       0.4s          0 of 2                2     219.3       $0.1322
 ```
 
-With a 5-second window the workers stopped between the bursts, and the second burst waited 51.4 s for new ones. It cost about as much as the 30-second window, because a serverless platform bills the cold start too. The 90-second window kept the workers idle for longer than the traffic needed. The repo's windows are 60 s (radiology), 30 s (labs) and 45 s (notes); change `GAP` in `experiments/scaledown_window.py` to the gap in your traffic.
+With a 5-second window the workers stopped between the bursts, and the second burst waited for new ones: 3.8 s instead of 0.3 s. The longer windows kept it fast and paid for idle workers: the 90-second window cost 6 times as much as the 5-second one. On the busy Mac, where a cold start took about 30 s, the second burst waited 51.4 s and the 5-second window cost about as much as the 30-second one ($0.1107 against $0.1177), because the platform bills the cold start too. The repo's windows are 60 s (radiology), 30 s (labs) and 45 s (notes); change `GAP` in `experiments/scaledown_window.py` to the gap in your traffic.
 
 **2. How many X-rays per request?** Sends the same 40 X-rays to 2 warm radiology workers in requests of 1, 5, 10 and 40.
 
@@ -116,15 +116,15 @@ make try-batch-size
 
 ```
 per request  requests  all done  X-rays/s  slowest request  compute per X-ray
-          1        40      2.2s      18.3             2.2s             107 ms
-          5         8      1.9s      21.5             1.9s              92 ms
-         10         4      2.0s      20.1             2.0s              98 ms
-         40         1      4.4s       9.2             4.4s             109 ms
+          1        40      1.4s      28.5             1.4s              68 ms
+          5         8      1.3s      30.0             1.3s              66 ms
+         10         4      1.3s      29.7             1.3s              65 ms
+         40         1      1.8s      22.7             1.8s              44 ms
 ```
 
-On CPU, batching saves little per X-ray (92 against 107 ms). Sending everything in one request halves the throughput, because one request goes to one worker and the other one waits. The benchmark sends 5 per request: keep at least as many requests as workers.
+One request of 40 used the least compute per X-ray (44 ms) and still had the lowest throughput, because one request goes to one worker and the other one waits. On the busy Mac the gap was wider: 9.2 X-rays/s for one request of 40, 21.5 for requests of 5. The benchmark sends 5 per request: keep at least as many requests as workers.
 
-**3. How far should one service scale out?** Sends a burst of 40 X-rays to a radiology pool that starts at zero, with a cap of 1, 2 and 4 workers sharing the machine's 8 cores.
+**3. How far should one service scale out?** Sends a burst of 40 X-rays to a radiology pool that starts at zero, with a cap of 1, 2 and 4 workers sharing the machine's cores.
 
 ```bash
 make try-max-workers
@@ -132,12 +132,12 @@ make try-max-workers
 
 ```
 max workers  threads each   burst  workers started  mean cold start  worker-s  at A100 rate
-          1             8   18.7s                1            12.3s      23.9       $0.0144
-          2             4   26.7s                2            23.7s      63.5       $0.0383
-          4             2   45.0s                4            41.6s     199.5       $0.1203
+          1             4    4.9s                1             3.2s      10.0       $0.0060
+          2             2    4.9s                2             3.5s      20.0       $0.0121
+          4             1    6.7s                4             5.5s      46.3       $0.0279
 ```
 
-On one machine, more workers made the burst slower and 8 times more expensive: they load their models at the same time and compete for the same cores and memory. On Modal each container gets its own resources, but each one still pays its own cold start. Change the caps in `experiments/max_workers.py`, or set `max_workers` in `LocalBackend`.
+On one machine, more workers didn't make the burst faster, and four cost 4.6 times as much as one: each loads its own model, and they compete for the same cores. On the busy Mac (8 cores), four workers made the burst 2.4 times slower (45.0 s against 18.7 s) and 8 times more expensive. On Modal each container gets its own resources, but each one still pays its own cold start. Change the caps in `experiments/max_workers.py`, or set `max_workers` in `LocalBackend`.
 
 ## Use your own data
 
@@ -220,9 +220,9 @@ Skills you'll practice:
 This playbook runs on CPU with public sample data. Before you run something like it for real:
 
 1. **Make cold starts shorter.** Loading the X-ray and note models took 24.7 s and 30.8 s on the busy Mac, against under 1 s to score a case ([Run it](#run-it), step 4). Bake the weights into the container image, load them once per container, and keep the image small. *Chapter 9, "Dynamic Model Parking with Checkpoint Streaming" (page 344).*
-2. **Set the scale-down window from your traffic.** A window shorter than the gap between bursts made the second burst wait 51.4 s and saved almost nothing ([Try this 1](#try-this)). Measure the gaps in your traffic, and pre-warm from the schedule where you can (`make predictive`). *Chapter 9, "Auto-Scaling Strategies for Multimodal Workloads" (page 332).*
-3. **Batch, but keep enough requests for every worker.** One 40-X-ray request ran at 9.2 X-rays/s, against 21.5 in requests of 5 ([Try this 2](#try-this)). *Chapter 9, "Batching and Inference Tiering" (page 344).*
-4. **Cap scale-out where workers share hardware.** Four workers on one 8-core machine made a burst 2.4 times slower and 8 times more expensive than one ([Try this 3](#try-this)). *Chapter 9, "Modality-Specific Scaling Profiles" (page 332).*
+2. **Set the scale-down window from your traffic.** A window shorter than the gap between bursts made the second burst start cold (3.8 s instead of 0.3 s in CI, 51.4 s on the busy Mac); on the busy Mac it saved almost nothing, because cold starts are billed too ([Try this 1](#try-this)). Measure the gaps in your traffic, and pre-warm from the schedule where you can (`make predictive`). *Chapter 9, "Auto-Scaling Strategies for Multimodal Workloads" (page 332).*
+3. **Batch, but keep enough requests for every worker.** One 40-X-ray request ran at 22.7 X-rays/s in CI, against 30.0 in requests of 5, because it kept the second worker idle ([Try this 2](#try-this)). *Chapter 9, "Batching and Inference Tiering" (page 344).*
+4. **Cap scale-out where workers share hardware.** Four workers on one machine cost 4.6 times as much as one in CI without finishing sooner, and on the busy Mac made the burst 2.4 times slower ([Try this 3](#try-this)). *Chapter 9, "Modality-Specific Scaling Profiles" (page 332).*
 5. **Check that new data looks like the training data.** The note model scores the first 1,000 characters of long transcriptions; a short pulmonary note scored 0.055 and another 0.495. Track the score distribution per modality and alert when it shifts. *Chapter 10, "Detecting Drift" (page 384).*
 6. **Validate inputs at the service.** The services score any lab vector and open any path they are sent; the lab model expects standardized values. `make check-data` checks a folder; the services should check each request too. *Chapter 4, "Validation, Transformation, Observability, and Annotation Across Modalities" (page 119).*
 7. **Retry and isolate failures.** When one local worker fails to start, `ElasticPool` fails every request waiting for that service, and nothing is retried. *Chapter 9, "Fault Tolerance and Recovery" (page 327).*
@@ -235,8 +235,8 @@ This playbook runs on CPU with public sample data. Before you run something like
 | Where you run it | Cost |
 |---|---|
 | Your machine | $0. Everything in [Run it](#run-it), [Try this](#try-this) and [Use your own data](#use-your-own-data) runs locally: no API keys, no Modal account. About 2.3 GB of disk on a Mac: 1.2 GB of sample data and 1 GB for the environment; the encoders add about 135 MB, and the LLM demos another 4 GB. |
-| A GitHub Codespace (2 cores, 8 GB, the default size; this repo asks for none) | Estimated $0.18 per hour at GitHub's list price (November 2026). A free personal account includes 120 core-hours a month, about 60 hours on this machine. |
-| Modal | Estimated $0.19 to $0.21 for the `make run` workload (75 cases) as Modal containers, from the worker-seconds measured locally: $0.2074 and $0.1882 in two runs on the Mac, radiology priced as an A100 40 GB ($0.000583 per second), CPU at $0.0000131 per core per second and memory at $0.00000222 per GiB per second ([Modal pricing](https://modal.com/pricing), November 2026). Most of it is radiology's GPU time. The local workers ran on CPU, so on a GPU the compute and cold-start times, and with them the total, will differ. Modal's Starter plan includes $30 of free credits a month. The billed costs of the edition's Modal runs on CPU containers are in [Tested on](#tested-on). |
+| A GitHub Codespace (2 cores, 8 GB, the default size; this repo asks for none) | Estimated $0.18 per hour at GitHub's list price (November 2026). A free personal account includes 120 core-hours a month, about 60 hours on this machine. In CI, `make run` in a clean devcontainer (with the models trained while the container was created) took 36 s; the whole job took 4 to 7 minutes. |
+| Modal | Estimated $0.07 to $0.21 for the `make run` workload (75 cases) as Modal containers, from the worker-seconds measured locally: $0.0714 in CI, and $0.2074 and $0.1882 in two runs on the busy Mac, where cold starts were longer; radiology priced as an A100 40 GB ($0.000583 per second), CPU at $0.0000131 per core per second and memory at $0.00000222 per GiB per second ([Modal pricing](https://modal.com/pricing), November 2026). Most of it is radiology's GPU time. The local workers ran on CPU, so on a GPU the compute and cold-start times, and with them the total, will differ. Modal's Starter plan includes $30 of free credits a month. The billed costs of the edition's Modal runs on CPU containers are in [Tested on](#tested-on). |
 
 ## How it works
 
