@@ -612,6 +612,8 @@ The rules are the chapter's heuristics. The model reads the same metrics and ans
 
 Contributions are welcome. The architecture is modular: a new modality is a new service class and encoder.
 
+If this playbook helped you, a star helps other readers find it.
+
 ## License
 
 The code is licensed under the MIT License; see the [LICENSE](LICENSE) file. The data has its own licenses (see [Data and licenses](#data-and-licenses)).
