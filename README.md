@@ -1,7 +1,11 @@
-# Serverless Multimodal Medical Pipeline
+# Playbook 09: Scale a hospital pipeline on serverless GPUs, and measure it
+**How to deploy a multimodal inference pipeline on serverless GPUs.** Chapter 9 of [*Data Engineering for Multimodal AI*](https://oreil.ly/data-engineering-multimodal) (O'Reilly, 2026), pages 357–367.
 
-**Chapter 9 playbook** from *Data Engineering for Multimodal AI* (O'Reilly, 2026), pages 357–367.
-Book: https://oreil.ly/data-engineering-multimodal
+Hospital workloads arrive in bursts, and GPUs left running between bursts cost money for nothing. In this repo, we explore this with Atlas Health, a fictional hospital network, using real chest X-rays, lab results and clinical notes (the book's version used synthetic inputs). Follow along to run the same pipeline on serverless GPUs and on your own machine, and measure what scaling to zero costs and saves.
+
+**The problem.** Each modality needs different compute at a different time, and keeping GPUs on all the time wastes most of the money.
+
+**What you'll work with.** You'll scale each modality on its own, run on serverless GPUs that scale to zero, and compare that with always-on clusters such as Spark, Ray and Beam.
 
 > Want the code exactly as printed? Use the `first-edition` tag. This branch is the 2026 maintenance update; see [Differences from the printed book](#differences-from-the-printed-book).
 

@@ -16,6 +16,7 @@ Nothing the book shows has changed.
   and a job that builds the devcontainer and runs `make run` inside it.
 
 ### Changed
+- README opening: a title that says what you'll do, three sentences on why, the example and what you'll do, then the data engineering problem and what you'll work with.
 - Book page numbers now match the printed book (they were Early Release page numbers).
 - `make smoke` skips the local LLM advisor test (Qwen3-1.7B on CPU, with a one-hour timeout). It is
   marked `slow`. CI runs `make smoke` on pushes and pull requests, and `make smoke-full` on the
