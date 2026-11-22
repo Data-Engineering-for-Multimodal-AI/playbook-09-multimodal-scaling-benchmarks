@@ -1,5 +1,8 @@
 .PHONY: setup run smoke smoke-full train demo predictive modal-deploy modal-benchmark modal-predictive clean
 
+# A bare `make` runs the smoke test, as it did before the uniform targets were added.
+.DEFAULT_GOAL := smoke
+
 # Uniform targets for The Playbooks: setup, run, smoke, smoke-full and clean. The book's commands
 # (pip install -r requirements.txt, python train_models.py, python run_serverless_demo.py,
 # modal deploy serverless_multimodal_pipeline.py, modal run ...) still work as printed.
