@@ -19,6 +19,7 @@ setup:
 run: setup
 	mkdir -p results
 	cd results && uv run --frozen python ../run_serverless_demo.py --quick
+	@echo "playbook-09-multimodal-scaling-benchmarks" > .playbook-done
 
 # Score one case by hand: make triage XRAY=path/to/xray.jpeg NOTE="a clinical note" (either or both)
 triage: setup

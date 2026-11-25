@@ -384,6 +384,8 @@ The full list is in [CHANGELOG.md](CHANGELOG.md).
 
 Details, and how each file is used, are in [`sample-data/README.md`](sample-data/README.md). The three datasets describe different people; a triage case pairs one held-out record of each. The pairing is synthetic, but the records and labels are real. Atlas Health is fictional. The models are teaching examples, not medical devices.
 
+The full list, with sources, licenses and citations, is in [DATA_LICENSES.md](DATA_LICENSES.md).
+
 ## Expected output
 
 All from runs on 2026-10-24. This is the output of this version; it may differ from the output printed in the book, and that's okay. Local runs: fresh clone, macOS 26.5.1 (Apple M3), Python 3.12.15. Modal runs: Modal 1.6.2, CPU containers (`ATLAS_GPU=none`). Download and progress messages are left out. Latencies and cold starts depend on the machine and load; the scores and labels don't.
