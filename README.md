@@ -646,10 +646,5 @@ The code is licensed under the MIT License; see the [LICENSE](LICENSE) file. The
 
 ---
 
-**Atlas Health AI - Serverless Multimodal Pipeline**
-*Elastic scaling for healthcare AI workloads*
-
----
-
 [The book](https://oreil.ly/data-engineering-multimodal) · [All playbooks](https://github.com/Data-Engineering-for-Multimodal-AI#playbooks) · Previous: [Playbook 08](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-08-multimodal-mlops) · Next: [Playbook 10](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-10-multimodal-inference-service)
 <!-- Substack post for this playbook: add link here -->
