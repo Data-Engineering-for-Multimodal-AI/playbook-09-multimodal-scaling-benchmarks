@@ -1,5 +1,15 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/header-dark.png">
+  <img src="docs/img/header-light.png" alt="Playbook 09 of 12, Chapter 9 of Data Engineering for Multimodal AI. Build: an inference pipeline on serverless GPUs. Data: X-rays, lab results and notes." width="100%">
+</picture>
+
 # Playbook 09: Scale a hospital pipeline on serverless GPUs, and measure it
 **How to deploy a multimodal inference pipeline on serverless GPUs.** Chapter 9 of [*Data Engineering for Multimodal AI*](https://oreil.ly/data-engineering-multimodal) (O'Reilly, 2026), pages 357–367.
+
+[![Tests](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-09-multimodal-scaling-benchmarks/actions/workflows/smoke.yml/badge.svg?branch=main)](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-09-multimodal-scaling-benchmarks/actions/workflows/smoke.yml)
+![Python 3.12 | 3.13](https://img.shields.io/badge/python-3.12%20%7C%203.13-1f1a19?labelColor=6b6361)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f1a19?labelColor=6b6361)](LICENSE)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-Codespaces-b4422e?logo=github&labelColor=6b6361)](https://codespaces.new/Data-Engineering-for-Multimodal-AI/playbook-09-multimodal-scaling-benchmarks?quickstart=1)
 
 Hospital workloads arrive in bursts, and GPUs left running between bursts cost money for nothing. In this repo, we explore this with Atlas Health, a fictional hospital network, using real chest X-rays, lab results and clinical notes (the book's version used synthetic inputs). Follow along to run the same pipeline on serverless GPUs and on your own machine, and measure what scaling to zero costs and saves.
 
@@ -240,6 +250,20 @@ This playbook runs on CPU with public sample data. Before you run something like
 
 ## How it works
 
+```mermaid
+flowchart LR
+  W["Clinical workloads<br/>four burst scenarios"] --> S["Elastic scaling<br/>Modal or local workers, scale to zero"]
+  P["Predictive autoscaler<br/>pre-warm from the schedule"] --> S
+  S --> R["Radiology service<br/>ResNet-18 on a GPU"]
+  S --> L["Labs service<br/>admission-risk classifier"]
+  S --> N["Notes service<br/>MiniLM classifier"]
+  R --> T["Triage and benchmark<br/>latency, cold starts, cost"]
+  L --> T
+  N --> T
+  classDef key fill:#ffe8e3,stroke:#b4422e,color:#1f1a19
+  class S key
+```
+
 - **Three services, three modalities, real data**:
   - Chest X-rays (ResNet-18 plus a pneumonia classifier, on a GPU).
   - Hospital lab results (an admission-risk classifier).
@@ -384,7 +408,7 @@ The full list is in [CHANGELOG.md](CHANGELOG.md).
 
 Details, and how each file is used, are in [`sample-data/README.md`](sample-data/README.md). The three datasets describe different people; a triage case pairs one held-out record of each. The pairing is synthetic, but the records and labels are real. Atlas Health is fictional. The models are teaching examples, not medical devices.
 
-The full list, with sources, licenses and citations, is in [DATA_LICENSES.md](DATA_LICENSES.md).
+The full list, with sources, licenses and citations, is in [DATA_SOURCES.md](DATA_SOURCES.md).
 
 ## Expected output
 
@@ -622,5 +646,5 @@ The code is licensed under the MIT License; see the [LICENSE](LICENSE) file. The
 
 ---
 
-**Atlas Health AI - Serverless Multimodal Pipeline**
-*Elastic scaling for healthcare AI workloads*
+[The book](https://oreil.ly/data-engineering-multimodal) · [All playbooks](https://github.com/Data-Engineering-for-Multimodal-AI#playbooks) · Previous: [Playbook 08](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-08-multimodal-mlops) · Next: [Playbook 10](https://github.com/Data-Engineering-for-Multimodal-AI/playbook-10-multimodal-inference-service)
+<!-- Substack post for this playbook: add link here -->
