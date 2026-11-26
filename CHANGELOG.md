@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (v1.1.0)
+## v1.1.0 (2026-11-26)
 
 Nothing the book shows has changed.
 
@@ -24,6 +24,9 @@ Nothing the book shows has changed.
   trained.
 - CI: a weekly scheduled run, a `make run` step, a check that the tree is unchanged after the run,
   and a job that builds the devcontainer and runs `make run` inside it.
+- `DATA_SOURCES.md`: the datasets and models this playbook uses, with their licenses and citations.
+- `make run` writes `.playbook-done` when it passes (ignored by git). `make card` in the
+  organization's `.github` repository reads these files and draws a completion card.
 
 ### Changed
 - README: "What you'll build" is now "How it works", and "Quick start" is now "Run it the way the
@@ -34,6 +37,9 @@ Nothing the book shows has changed.
 - `make smoke` skips the local LLM advisor test (Qwen3-1.7B on CPU, with a one-hour timeout). It is
   marked `slow`. CI runs `make smoke` on pushes and pull requests, and `make smoke-full` on the
   weekly run and on manual runs.
+- README: a header image (light and dark), badges for CI, Python, license and Codespaces, a diagram at
+  the top of "How it works", and a footer that links the book, all playbooks, and the previous and
+  next playbook.
 
 ### Fixed
 - `test_sample_data` failed on macOS when Finder had written a `.DS_Store` into `sample-data/`. It
